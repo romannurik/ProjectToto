@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DummyNibOwner">
+            <connections>
+                <outlet property="behaviorsAnimationTypeButton" destination="gwF-uK-OWe" id="iF1-bF-yGl"/>
+                <outlet property="behaviorsPagerButton" destination="8uY-xO-aCI" id="97Y-bH-Xe1"/>
+                <outlet property="behaviorsScrollTypeButton" destination="q6A-FV-rrs" id="XYm-Dr-1vg"/>
+                <outlet property="headingVisualEffectView" destination="Dmd-Jp-NXB" id="tdq-zz-sWc"/>
+                <outlet property="hotspotNavigateButton" destination="nMU-Lr-PGZ" id="T4G-22-LRm"/>
+                <outlet property="hotspotNavigateGroup" destination="QFv-cm-JV3" id="PlH-bJ-AbV"/>
+                <outlet property="hotspotNavigateScreenField" destination="cvI-LV-igO" id="bPB-cw-lD8"/>
+                <outlet property="hotspotNavigateScreenPreview" destination="lzy-Z2-xXg" id="T6e-Ww-Us8"/>
+                <outlet property="hotspotNoneButton" destination="DTV-aS-bQy" id="U5x-yG-sYO"/>
+                <outlet property="hotspotShowHideAddButtonGroup" destination="hZM-vK-4xH" id="hKH-cR-kp2"/>
+                <outlet property="hotspotShowHideAddGroup" destination="t1m-au-d7m" id="ELH-Xs-vY8"/>
+                <outlet property="hotspotShowHideAddLayerField" destination="vTf-YB-sro" id="B8Q-Eh-1Ag"/>
+                <outlet property="hotspotShowHideAddPreview" destination="Zjn-aV-adB" id="acL-eD-v2O"/>
+                <outlet property="hotspotShowHideButton" destination="cgW-M4-fHf" id="oDt-JL-tie"/>
+                <outlet property="hotspotShowHideGroup" destination="WI3-r2-wKh" id="Q9Q-Mn-C4p"/>
+                <outlet property="hotspotShowHideItemTemplateGroup" destination="85v-d9-7jk" id="lef-BD-2Ve"/>
+                <outlet property="layerNameLabel" destination="OXr-Ms-MQP" id="BIh-wf-6G9"/>
+                <outlet property="moreExportDefaultButton" destination="SKO-fg-UNO" id="CdU-xW-Pfl"/>
+                <outlet property="moreExportExcludeButton" destination="qfF-Po-IPb" id="4e6-Ih-8fH"/>
+                <outlet property="moreExportFlattenButton" destination="thH-zd-VFv" id="7nb-ki-UsH"/>
+                <outlet property="moreExportIncludeButton" destination="jLZ-GO-OYb" id="YMv-9l-Uww"/>
+                <outlet property="tabIndicatorsView" destination="ahb-U0-MKe" id="DJL-9I-AwW"/>
+                <outlet property="tabView" destination="Dwt-dN-U06" id="EsK-nz-iSI"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="s8r-9v-G66">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="283" y="305" width="345" height="718"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <view key="contentView" id="nxJ-pS-Ccr">
+                <rect key="frame" x="0.0" y="0.0" width="345" height="718"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" state="followsWindowActiveState" id="Dmd-Jp-NXB">
+                        <rect key="frame" x="0.0" y="635" width="345" height="83"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="o2m-jW-AcC">
+                                <rect key="frame" x="0.0" y="-2" width="345" height="5"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="3En-TS-8JQ">
+                                <rect key="frame" x="50" y="57" width="282" height="11"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Toto annotations for layer" id="wmR-fR-z0K">
+                                    <font key="font" metaFont="miniSystem"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="OXr-Ms-MQP">
+                                <rect key="frame" x="50" y="40" width="282" height="17"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="N/A" id="BHK-lp-xP3">
+                                    <font key="font" metaFont="systemMedium" size="13"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <segmentedControl verticalHuggingPriority="750" id="ahb-U0-MKe">
+                                <rect key="frame" x="15" y="10" width="177" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="cIa-vC-vjj">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <segments>
+                                        <segment label="Hotspot" selected="YES"/>
+                                        <segment label="Behaviors" tag="1"/>
+                                        <segment label="More"/>
+                                    </segments>
+                                </segmentedCell>
+                            </segmentedControl>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="xQC-R9-K2S">
+                                <rect key="frame" x="15" y="39" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Icon" id="Tlk-Sm-Eub"/>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                    </visualEffectView>
+                    <tabView drawsBackground="NO" type="noTabsNoBorder" id="Dwt-dN-U06">
+                        <rect key="frame" x="0.0" y="-5" width="345" height="640"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <font key="font" metaFont="system"/>
+                        <tabViewItems>
+                            <tabViewItem label="Hotspot" identifier="1" id="ejf-Z7-OZr">
+                                <view key="view" id="Xd2-O6-CMM">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="640"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="EdY-cs-NSQ">
+                                            <rect key="frame" x="0.0" y="5" width="345" height="635"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="79S-fh-VPM">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="635"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <view id="bCe-5o-zTi">
+                                                        <rect key="frame" x="0.0" y="24" width="345" height="640"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                        <subviews>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="LRA-9k-sNG">
+                                                                <rect key="frame" x="13" y="611" width="250" height="14"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <animations/>
+                                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="When clicking this layer:" id="Uf3-Ud-P4k">
+                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <button id="cgW-M4-fHf">
+                                                                <rect key="frame" x="13" y="584" width="318" height="19"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                <animations/>
+                                                                <buttonCell key="cell" type="radio" title="Show/hide layer(s)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="dig-nd-wEe">
+                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                </buttonCell>
+                                                            </button>
+                                                            <view id="WI3-r2-wKh">
+                                                                <rect key="frame" x="33" y="408" width="297" height="170"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                <subviews>
+                                                                    <view id="85v-d9-7jk">
+                                                                        <rect key="frame" x="0.0" y="155" width="297" height="15"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                        <subviews>
+                                                                            <button id="fVE-sR-7WH">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
+                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                                <animations/>
+                                                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStopProgressFreestandingTemplate" imagePosition="only" alignment="center" controlSize="small" inset="2" id="Fyr-bj-Lwq">
+                                                                                    <behavior key="behavior" lightByContents="YES"/>
+                                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                                </buttonCell>
+                                                                            </button>
+                                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="TYX-jO-Ied">
+                                                                                <rect key="frame" x="18" y="0.0" width="38" height="15"/>
+                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                                <animations/>
+                                                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Show" id="Uu1-le-kkw">
+                                                                                    <font key="font" metaFont="systemMedium" size="11"/>
+                                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                </textFieldCell>
+                                                                            </textField>
+                                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="zfW-pN-Xv1">
+                                                                                <rect key="frame" x="57" y="0.0" width="242" height="15"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                                <animations/>
+                                                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Layer name" id="Ag9-XY-dOl">
+                                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                </textFieldCell>
+                                                                            </textField>
+                                                                        </subviews>
+                                                                        <animations/>
+                                                                    </view>
+                                                                    <view id="t1m-au-d7m">
+                                                                        <rect key="frame" x="0.0" y="20" width="297" height="114"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                        <subviews>
+                                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Zjn-aV-adB">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="203" height="95"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                                <animations/>
+                                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="Nm0-sJ-DaN"/>
+                                                                            </imageView>
+                                                                            <comboBox verticalHuggingPriority="750" id="vTf-YB-sro">
+                                                                                <rect key="frame" x="0.0" y="93" width="206" height="21"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                                <animations/>
+                                                                                <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" numberOfVisibleItems="5" id="e6j-q3-Hgd">
+                                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                </comboBoxCell>
+                                                                            </comboBox>
+                                                                            <segmentedControl verticalHuggingPriority="750" id="hZM-vK-4xH">
+                                                                                <rect key="frame" x="206" y="94" width="93" height="20"/>
+                                                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                                                                <animations/>
+                                                                                <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="rounded" trackingMode="momentary" id="Cty-Id-dUO">
+                                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                                    <segments>
+                                                                                        <segment label="Show"/>
+                                                                                        <segment label="Hide" tag="1"/>
+                                                                                    </segments>
+                                                                                </segmentedCell>
+                                                                            </segmentedControl>
+                                                                        </subviews>
+                                                                        <animations/>
+                                                                    </view>
+                                                                </subviews>
+                                                                <animations/>
+                                                            </view>
+                                                            <view id="QFv-cm-JV3">
+                                                                <rect key="frame" x="33" y="208" width="297" height="163"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                <subviews>
+                                                                    <comboBox verticalHuggingPriority="750" id="cvI-LV-igO">
+                                                                        <rect key="frame" x="0.0" y="142" width="300" height="22"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                        <animations/>
+                                                                        <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" numberOfVisibleItems="5" id="796-TB-wsm">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </comboBoxCell>
+                                                                    </comboBox>
+                                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lzy-Z2-xXg">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="297" height="144"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                        <animations/>
+                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="EDD-kv-1il"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <animations/>
+                                                            </view>
+                                                            <button id="nMU-Lr-PGZ">
+                                                                <rect key="frame" x="13" y="377" width="318" height="19"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                <animations/>
+                                                                <buttonCell key="cell" type="radio" title="Navigate to a screen" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="HaJ-kS-S6D">
+                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                </buttonCell>
+                                                            </button>
+                                                            <button id="DTV-aS-bQy">
+                                                                <rect key="frame" x="13" y="165" width="318" height="19"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                <animations/>
+                                                                <buttonCell key="cell" type="radio" title="Do nothing (or use a custom hotspot)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="YuQ-T0-Tvp">
+                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                </buttonCell>
+                                                            </button>
+                                                        </subviews>
+                                                        <animations/>
+                                                    </view>
+                                                </subviews>
+                                                <animations/>
+                                            </clipView>
+                                            <animations/>
+                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="LP0-ra-USk">
+                                                <rect key="frame" x="-100" y="-100" width="374" height="16"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <animations/>
+                                            </scroller>
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="xDm-QX-pAN">
+                                                <rect key="frame" x="329" y="0.0" width="16" height="635"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <animations/>
+                                            </scroller>
+                                        </scrollView>
+                                    </subviews>
+                                    <animations/>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Behaviors" identifier="" id="n3e-9T-QCB">
+                                <view key="view" id="zAY-Y0-rdl">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="640"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="gH8-dj-puR">
+                                            <rect key="frame" x="13" y="611" width="121" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
+                                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Scrolling" id="oxn-fW-pBl">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="u7s-em-KQQ">
+                                            <rect key="frame" x="13" y="582" width="121" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
+                                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Show/hide animation" id="hbr-tJ-dgF">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <popUpButton verticalHuggingPriority="750" id="gwF-uK-OWe">
+                                            <rect key="frame" x="134" y="577" width="131" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
+                                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="nZj-3D-py3">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <menu key="menu" id="ENZ-WG-mPe">
+                                                    <items>
+                                                        <menuItem title="Don't animate" id="yjy-DK-v4s">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem isSeparatorItem="YES" id="shW-pr-HZy"/>
+                                                        <menuItem title="Fade" tag="1" id="ZxJ-Yt-j5T"/>
+                                                        <menuItem isSeparatorItem="YES" id="GSR-Ql-daC"/>
+                                                        <menuItem title="Slide left" tag="10" id="Ih2-G6-YFQ"/>
+                                                        <menuItem title="Slide right" tag="11" id="uOk-fL-tt7">
+                                                            <attributedString key="attributedTitle"/>
+                                                        </menuItem>
+                                                        <menuItem title="Slide up" tag="12" id="qrt-bb-9LX"/>
+                                                        <menuItem title="Slide down" tag="13" id="XId-r0-kIm"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                        </popUpButton>
+                                        <popUpButton verticalHuggingPriority="750" id="q6A-FV-rrs">
+                                            <rect key="frame" x="134" y="606" width="131" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
+                                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="cdh-1w-ODu">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <menu key="menu" id="Q6i-BK-j1Q">
+                                                    <items>
+                                                        <menuItem title="Don't scroll" id="6IH-fS-jMq"/>
+                                                        <menuItem isSeparatorItem="YES" id="Gg9-Ch-vFs"/>
+                                                        <menuItem title="Vertically" tag="1" id="5CK-G1-JmP"/>
+                                                        <menuItem title="Horizontally" tag="2" id="GCv-An-n5j"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                        </popUpButton>
+                                        <button id="8uY-xO-aCI">
+                                            <rect key="frame" x="12" y="549" width="320" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <animations/>
+                                            <buttonCell key="cell" type="check" title="Horizontal swipe (pager)" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="8p9-RG-c7W">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                        </button>
+                                    </subviews>
+                                    <animations/>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="More" identifier="" id="kPT-Km-ozK">
+                                <view key="view" id="rpt-QD-4nd">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="640"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hyV-ac-BeB">
+                                            <rect key="frame" x="13" y="496" width="319" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <animations/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Additional annotations" id="Idx-3a-bu2">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button id="jLZ-GO-OYb">
+                                            <rect key="frame" x="13" y="546" width="318" height="19"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">Prevents the layer from being automatically flattened. If a parent flattens its children, however, this layer will still not be exported.</string>
+                                            <animations/>
+                                            <buttonCell key="cell" type="radio" title="Force export layer" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="2qV-mg-f27">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                        </button>
+                                        <button toolTip="Ignore this layer when exporting." id="qfF-Po-IPb">
+                                            <rect key="frame" x="13" y="566" width="318" height="19"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <animations/>
+                                            <buttonCell key="cell" type="radio" title="Exclude from the export" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="lju-3y-nX5">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                        </button>
+                                        <button toolTip="Flatten all descendant layers into this layer, preventing them from being individually exported." id="thH-zd-VFv">
+                                            <rect key="frame" x="13" y="526" width="318" height="19"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <animations/>
+                                            <buttonCell key="cell" type="radio" title="Flatten all children" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="bTW-jO-6h8">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Zxx-m2-Ujn">
+                                            <rect key="frame" x="13" y="608" width="319" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <animations/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Layer export behavior" id="Cv7-GN-wq6">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button id="SKO-fg-UNO">
+                                            <rect key="frame" x="13" y="586" width="318" height="19"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <animations/>
+                                            <buttonCell key="cell" type="radio" title="Default export behavior" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="BQN-QO-Tw2">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                        </button>
+                                    </subviews>
+                                    <animations/>
+                                </view>
+                            </tabViewItem>
+                        </tabViewItems>
+                    </tabView>
+                </subviews>
+                <animations/>
+            </view>
+            <point key="canvasLocation" x="351.5" y="21"/>
+        </window>
+        <drawer trailingOffset="15" id="bR4-Au-hU5">
+            <size key="contentSize" width="100" height="100"/>
+            <size key="maxContentSize" width="10000" height="10000"/>
+        </drawer>
+    </objects>
+    <resources>
+        <image name="Icon" width="512" height="512"/>
+        <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
+    </resources>
+</document>

@@ -1,0 +1,31 @@
+{
+  "commands" : [
+    {
+      "script" : "export.cocoascript",
+      "handler" : "onRun",
+      "shortcut" : "ctrl alt cmd t",
+      "name" : "Export Assets for Toto",
+      "identifier" : "export"
+    },
+    {
+      "script" : "annotate_layer.cocoascript",
+      "handler" : "onRun",
+      "shortcut" : "ctrl alt cmd a",
+      "name" : "Annotate Layer…",
+      "identifier" : "annotate_layer"
+    }
+  ],
+  "menu" : {
+    "items" : [
+      "export",
+      "annotate_layer"
+    ],
+    "title" : "Project Toto"
+  },
+  "identifier" : "net.nurik.roman.toto.sketchplugin",
+  "version" : "0.1",
+  "description" : "Actions related to the Toto prototyping tool",
+  "author" : "Roman Nurik",
+  "authorEmail" : "roman@nurik.net",
+  "name" : "Toto"
+}

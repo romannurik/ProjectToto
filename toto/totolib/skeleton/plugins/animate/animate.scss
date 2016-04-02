@@ -1,0 +1,90 @@
+/*
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+$animDuration: 0.3s;
+$transitionDuration: 0.6s;
+
+toto-screen {
+
+  // in-screen animations
+
+  .animate-fade {
+    transition: opacity $animDuration;
+    opacity: 1;
+    &.hidden {
+      transition: visibility 0s linear $animDuration, opacity $animDuration;
+      opacity: 0 !important;
+    }
+  }
+
+  .animate-slideRight, .animate-slideUp, .animate-slideLeft, .animate-slideDown {
+    transition: transform $animDuration, opacity $animDuration;
+    transform: none;
+    opacity: 1;
+    &.hidden {
+      opacity: 0 !important;
+      transition: visibility 0s linear $animDuration, transform $animDuration, opacity $animDuration;
+    }
+  }
+
+  .animate-slideRight.hidden {
+    transform: translate3d(-100%, 0, 0);
+  }
+  .animate-slideUp.hidden {
+    transform: translate3d(0, 100%, 0);
+  }
+  .animate-slideLeft.hidden {
+    transform: translate3d(100%, 0, 0);
+  }
+  .animate-slideDown.hidden {
+    transform: translate3d(0, -100%, 0);
+  }
+
+  // screen transitions
+
+  &.transition-fade:not(.overlay) {
+    transition: visibility 0s linear $transitionDuration/2, opacity $transitionDuration/2 ease 0s;
+    &.current {
+      transition: opacity $transitionDuration/2 ease $transitionDuration/2;
+    }
+  }
+
+  // overlay screen used for shared element transitions only
+  &.overlay {
+    background: transparent;
+    pointer-events: none;
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+
+    @for $i from 0 through 1000 {
+      :nth-child(#{$i}) {
+        z-index: $i;
+      }
+    }
+
+    .tween {
+      transition: transform $transitionDuration ease,
+                  opacity $transitionDuration ease,
+                  margin-left $transitionDuration ease,
+                  margin-top $transitionDuration ease;
+    }
+
+    &.hidden {
+      visibility: hidden;
+    }
+  }
+}

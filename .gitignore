@@ -1,0 +1,8 @@
+.sass-cache
+_sandbox
+.tmp
+.DS_Store
+**/toto-prototype/build
+xcuserdata
+xcshareddata
+localbrew

@@ -1,0 +1,33 @@
+toto-layer {
+  &.scroll-vertical {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  &.scroll-horizontal {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    &::-webkit-scrollbar { 
+      display: none;
+    }
+  }
+  &.scroll-horizontal,
+  &.scroll-vertical {
+    pointer-events: auto;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    &.engaged {
+      cursor: grabbing;
+    }
+  }
+}
+
+toto-screen .pager {
+  pointer-events: auto;
+  cursor: grab;
+  &.engaged {
+    cursor: grabbing;
+    .scroll-horizontal, .scroll-vertical {
+      cursor: grabbing;
+    }
+  }
+}

@@ -1,0 +1,348 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EE4ED0321C3E1E7A002AEFEA /* toto in Resources */ = {isa = PBXBuildFile; fileRef = EE4ED0311C3E1E7A002AEFEA /* toto */; };
+		EE79DA371B896B1E002292C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE79DA361B896B1E002292C7 /* AppDelegate.swift */; };
+		EE79DA391B896B1E002292C7 /* EmptyStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE79DA381B896B1E002292C7 /* EmptyStateViewController.swift */; };
+		EE79DA3B1B896B1E002292C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE79DA3A1B896B1E002292C7 /* Images.xcassets */; };
+		EE79DA3E1B896B1E002292C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE79DA3C1B896B1E002292C7 /* Main.storyboard */; };
+		EE79DA571B8A083C002292C7 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE79DA561B8A083C002292C7 /* WindowController.swift */; };
+		EE79DA591B8A0BB0002292C7 /* NonInteractiveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE79DA581B8A0BB0002292C7 /* NonInteractiveImageView.swift */; };
+		EE79DA5F1B8ABF10002292C7 /* PrototypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE79DA5E1B8ABF10002292C7 /* PrototypeViewController.swift */; };
+		EEBF50121C3C7457008D4F62 /* TotoRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBF50111C3C7457008D4F62 /* TotoRunner.swift */; };
+		EEBF50151C3C7A6A008D4F62 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBF50141C3C7A6A008D4F62 /* Events.swift */; };
+		EEBF50171C3D9F53008D4F62 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBF50161C3D9F53008D4F62 /* Globals.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EE4ED0311C3E1E7A002AEFEA /* toto */ = {isa = PBXFileReference; lastKnownFileType = folder; name = toto; path = ../../toto; sourceTree = "<group>"; };
+		EE79DA311B896B1E002292C7 /* Project Toto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project Toto.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE79DA351B896B1E002292C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE79DA361B896B1E002292C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EE79DA381B896B1E002292C7 /* EmptyStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateViewController.swift; sourceTree = "<group>"; };
+		EE79DA3A1B896B1E002292C7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EE79DA3D1B896B1E002292C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EE79DA561B8A083C002292C7 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		EE79DA581B8A0BB0002292C7 /* NonInteractiveImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonInteractiveImageView.swift; sourceTree = "<group>"; };
+		EE79DA5E1B8ABF10002292C7 /* PrototypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrototypeViewController.swift; sourceTree = "<group>"; };
+		EEBF50111C3C7457008D4F62 /* TotoRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotoRunner.swift; sourceTree = "<group>"; };
+		EEBF50141C3C7A6A008D4F62 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		EEBF50161C3D9F53008D4F62 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE79DA2E1B896B1E002292C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EE79DA281B896B1E002292C7 = {
+			isa = PBXGroup;
+			children = (
+				EE79DA331B896B1E002292C7 /* Toto */,
+				EE79DA321B896B1E002292C7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EE79DA321B896B1E002292C7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE79DA311B896B1E002292C7 /* Project Toto.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE79DA331B896B1E002292C7 /* Toto */ = {
+			isa = PBXGroup;
+			children = (
+				EE79DA361B896B1E002292C7 /* AppDelegate.swift */,
+				EEBF50161C3D9F53008D4F62 /* Globals.swift */,
+				EEBF50111C3C7457008D4F62 /* TotoRunner.swift */,
+				EE79DA561B8A083C002292C7 /* WindowController.swift */,
+				EE79DA3A1B896B1E002292C7 /* Images.xcassets */,
+				EEBF50131C3C79F7008D4F62 /* Libs */,
+				EE79DA3C1B896B1E002292C7 /* Main.storyboard */,
+				EE79DA341B896B1E002292C7 /* Supporting Files */,
+				EE79DA5D1B8ABEE6002292C7 /* View Controllers */,
+				EE79DA5C1B8ABEB5002292C7 /* Views */,
+			);
+			path = Toto;
+			sourceTree = "<group>";
+		};
+		EE79DA341B896B1E002292C7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EE4ED0311C3E1E7A002AEFEA /* toto */,
+				EE79DA351B896B1E002292C7 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EE79DA5C1B8ABEB5002292C7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EE79DA581B8A0BB0002292C7 /* NonInteractiveImageView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		EE79DA5D1B8ABEE6002292C7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EE79DA381B896B1E002292C7 /* EmptyStateViewController.swift */,
+				EE79DA5E1B8ABF10002292C7 /* PrototypeViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		EEBF50131C3C79F7008D4F62 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				EEBF50141C3C7A6A008D4F62 /* Events.swift */,
+			);
+			name = Libs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE79DA301B896B1E002292C7 /* Project Toto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE79DA4D1B896B1E002292C7 /* Build configuration list for PBXNativeTarget "Project Toto" */;
+			buildPhases = (
+				EE79DA2D1B896B1E002292C7 /* Sources */,
+				EE79DA2E1B896B1E002292C7 /* Frameworks */,
+				EE79DA2F1B896B1E002292C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Project Toto";
+			productName = Toto;
+			productReference = EE79DA311B896B1E002292C7 /* Project Toto.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE79DA291B896B1E002292C7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Roman Nurik";
+				TargetAttributes = {
+					EE79DA301B896B1E002292C7 = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = NLACF347G7;
+					};
+				};
+			};
+			buildConfigurationList = EE79DA2C1B896B1E002292C7 /* Build configuration list for PBXProject "Toto" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EE79DA281B896B1E002292C7;
+			productRefGroup = EE79DA321B896B1E002292C7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE79DA301B896B1E002292C7 /* Project Toto */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE79DA2F1B896B1E002292C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE79DA3B1B896B1E002292C7 /* Images.xcassets in Resources */,
+				EE4ED0321C3E1E7A002AEFEA /* toto in Resources */,
+				EE79DA3E1B896B1E002292C7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE79DA2D1B896B1E002292C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE79DA5F1B8ABF10002292C7 /* PrototypeViewController.swift in Sources */,
+				EEBF50121C3C7457008D4F62 /* TotoRunner.swift in Sources */,
+				EE79DA391B896B1E002292C7 /* EmptyStateViewController.swift in Sources */,
+				EE79DA571B8A083C002292C7 /* WindowController.swift in Sources */,
+				EEBF50171C3D9F53008D4F62 /* Globals.swift in Sources */,
+				EEBF50151C3C7A6A008D4F62 /* Events.swift in Sources */,
+				EE79DA371B896B1E002292C7 /* AppDelegate.swift in Sources */,
+				EE79DA591B8A0BB0002292C7 /* NonInteractiveImageView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EE79DA3C1B896B1E002292C7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE79DA3D1B896B1E002292C7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EE79DA4B1B896B1E002292C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EE79DA4C1B896B1E002292C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		EE79DA4E1B896B1E002292C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Toto/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = net.nurik.roman.Toto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EE79DA4F1B896B1E002292C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Toto/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = net.nurik.roman.Toto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE79DA2C1B896B1E002292C7 /* Build configuration list for PBXProject "Toto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE79DA4B1B896B1E002292C7 /* Debug */,
+				EE79DA4C1B896B1E002292C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE79DA4D1B896B1E002292C7 /* Build configuration list for PBXNativeTarget "Project Toto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE79DA4E1B896B1E002292C7 /* Debug */,
+				EE79DA4F1B896B1E002292C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EE79DA291B896B1E002292C7 /* Project object */;
+}

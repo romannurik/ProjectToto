@@ -1,0 +1,504 @@
+/*
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import 'lib/MochaJSDelegate.js';
+@import 'lib/util.js';
+@import 'lib/sketch-nibui.js';
+@import 'lib/toto-plugin-common.js';
+
+var POPOVER_WIDTH = 300;
+var POPOVER_HEIGHT = 400;
+
+var eligibleNavigateArtboards = [];
+var eligibleNavigateNames = [];
+var cachedLayerPreviewImages = {};
+
+var context;
+var nibui;
+var selLayer;
+var selLayerArtboard;
+var selLayerKey;
+var layersInArtboardByKey = {};
+
+var currentState = {
+  hotspotType: null,
+  hotspotShowHideLayers: [],
+  exportType: null
+};
+
+var onRun = function(ctx) {
+  context = ctx;
+  coscript.setShouldKeepAround(true);
+
+  selLayer = null;
+  if (context.selection.count() > 0) {
+    selLayer = context.selection.objectAtIndex(0);
+    parseLayerName(selLayer);
+  } else {
+    context.document.showMessage('Please select a layer to add annotations to.');
+    return;
+  }
+
+  selLayerArtboard = selLayer;
+  while (selLayerArtboard != null && !isArtboard(selLayerArtboard)) {
+    selLayerArtboard = selLayerArtboard.parentGroup();
+  }
+
+  markAndIdentifyExportableLayersForArtboard(selLayerArtboard, function(l) {
+    layersInArtboardByKey = l;
+    for (var key in layersInArtboardByKey) {
+      if (layersInArtboardByKey[key] == selLayer) {
+        selLayerKey = key;
+      }
+    }
+  });
+
+  // alert.setIcon(NSImage.alloc().initWithContentsOfFile(
+  //     context.plugin.urlForResourceNamed('icon512.png').path()));
+
+  nibui = new NibUI(context,
+      'UIBundle', 'UIProject', [
+        // general views
+        'layerNameLabel', 'headingVisualEffectView', 'tabIndicatorsView', 'tabView',
+
+        // hotspot views
+        'hotspotShowHideButton', 'hotspotShowHideGroup',
+          'hotspotShowHideItemTemplateGroup',
+          'hotspotShowHideAddGroup',
+            'hotspotShowHideAddLayerField', 'hotspotShowHideAddButtonGroup', 'hotspotShowHideAddPreview',
+        'hotspotNavigateButton', 'hotspotNavigateGroup',
+          'hotspotNavigateScreenField', 'hotspotNavigateScreenPreview',
+        'hotspotNoneButton',
+
+        // behaviors views
+        'behaviorsScrollTypeButton', 'behaviorsPagerButton', 'behaviorsAnimationTypeButton',
+
+        // more tab views
+        'moreExportExcludeButton', 'moreExportIncludeButton',
+        'moreExportFlattenButton', 'moreExportDefaultButton'
+       ]);
+
+  nibui.attachTargetAndAction(nibui.tabIndicatorsView, function() {
+    var sel = nibui.tabIndicatorsView.selectedSegment();
+    nibui.tabView.selectTabViewItemAtIndex(sel);
+  });
+
+  var docWindow = context.document.window();
+  var popover;
+
+  // sheetWindow.setDefaultButtonCell(nibui.saveButton.cell());
+
+  // Set up core UI
+  nibui.layerNameLabel.setStringValue(selLayerKey || selLayer._realName);
+  // nibui.attachTargetAndAction(nibui.cancelButton, function() {
+  //   canceled = true;
+  //   popover.close();
+  // });
+  nibui.headingVisualEffectView.setMaterial(NSVisualEffectMaterialTitlebar);
+
+  // Set up rest of the UI
+  setupHotspotUi();
+  setupBehaviorsUi();
+  setupMoreUi();
+
+  // Run first UI updates
+  updateHotspotUi();
+  updateMoreUi();
+
+  // Start the sheet
+  // sheetWindow.setContentSize(CGSizeMake(500, 400));
+  //docWindow.beginSheet_completionHandler_(sheetWindow, null);
+  popover = showViewAsLayerPopover(context, nibui.window.contentView(), selLayer);
+  popover.setContentSize(CGSizeMake(POPOVER_WIDTH, POPOVER_HEIGHT));
+  var popoverDelegate = new MochaJSDelegate({
+    'popoverDidClose:': function(){
+      updateSelLayerName();
+      nibui.destroy();
+      coscript.setShouldKeepAround(false);
+    }
+  });
+  popover.setDelegate(popoverDelegate.getClassInstance());
+};
+
+function updateSelLayerName() {
+  var draftAnnotations = selLayer._annotations;
+  var draftProperties = {};
+
+  readHotspotUiAnnotations(draftAnnotations, draftProperties);
+  readBehaviorsUiAnnotations(draftAnnotations, draftProperties);
+  readMoreUiAnnotations(draftAnnotations, draftProperties);
+
+  selLayer._annotations = draftAnnotations;
+  ['_ignore', '_flattenAllChildren', '_forceOwnImage']
+      .forEach(function(p) { selLayer[p] = draftProperties[p]; });
+
+  updateParsedLayerName(selLayer);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Hotspot tab
+
+function setupHotspotUi() {
+  // Select the current hotspot item
+  currentState.hotspotType = null;
+  if (selLayer._annotations['navigate']) {
+    currentState.hotspotType = 'navigate';
+  } else if (selLayer._annotations['show'] || selLayer._annotations['hide']) {
+    currentState.hotspotType = 'showhide';
+  }
+
+  nibui.attachTargetAndAction(
+      [nibui.hotspotShowHideButton, nibui.hotspotNavigateButton, nibui.hotspotNoneButton],
+      function() {
+        currentState.hotspotType = null;
+        if (nibui.hotspotShowHideButton.state() == NSOnState) {
+          currentState.hotspotType = 'showhide';
+        } else if (nibui.hotspotNavigateButton.state() == NSOnState) {
+          currentState.hotspotType = 'navigate';
+        }
+
+        updateHotspotUi();
+        updateSelLayerName();
+      });
+
+  // Set up sub UIs
+  setupHotspotShowHideUi();
+  setupHotspotNavigateUi();
+}
+
+function updateHotspotUi() {
+  // Update sub UIs
+  updateHotspotNavigateUi();
+  updateHotspotShowHideUi();
+
+  // Update general UI
+  nibui.hotspotShowHideButton.setState(currentState.hotspotType == 'showhide' ? NSOnState : NSOffState);
+  nibui.hotspotShowHideGroup.setHidden(currentState.hotspotType != 'showhide');
+  nibui.hotspotNavigateButton.setState(currentState.hotspotType == 'navigate' ? NSOnState : NSOffState);
+  nibui.hotspotNavigateGroup.setHidden(currentState.hotspotType != 'navigate');
+  nibui.hotspotNoneButton.setState(currentState.hotspotType == null ? NSOnState : NSOffState);
+
+  // Update stacking order
+  var stackingOrder = [nibui.hotspotShowHideButton];
+  if (currentState.hotspotType == 'showhide') {
+    stackingOrder.push(nibui.hotspotShowHideGroup);
+  }
+
+  stackingOrder.push(nibui.hotspotNavigateButton);
+  if (currentState.hotspotType == 'navigate') {
+    stackingOrder.push(nibui.hotspotNavigateGroup);
+  }
+
+  stackingOrder.push(nibui.hotspotNoneButton);
+
+  restackViews(stackingOrder, {
+    spacing: 5,
+    bottomMargin: 20,
+    minHeight: POPOVER_HEIGHT - nibui.headingVisualEffectView.frame().size.height,
+    resizeParent: true
+  });
+
+  updateSelLayerName();
+}
+
+function setupHotspotNavigateUi() {
+  var tmp = context.document.currentPage().layers();
+  for (var i = 0; i < tmp.count(); i++) {
+    var obj = tmp.objectAtIndex(i);
+    if (isArtboard(obj)) {
+      parseLayerName(obj);
+      eligibleNavigateArtboards.push(obj);
+      eligibleNavigateNames.push(obj._realName);
+    }
+  }
+
+  nibui.hotspotNavigateScreenField.addItemsWithObjectValues(eligibleNavigateNames);
+  nibui.attachTargetAndAction(nibui.hotspotNavigateScreenField,
+      function() {
+        updateHotspotUi();
+      });
+
+  if (selLayer._annotations['navigate']) {
+    var val = String(selLayer._annotations['navigate']).replace(/_/g, ' ');
+    nibui.hotspotNavigateScreenField.setStringValue(val);
+    nibui.hotspotNavigateScreenField.selectItemWithObjectValue(val);
+  }
+}
+
+function updateHotspotNavigateUi() {
+  // Show navigation item preview
+  var selItem = nibui.hotspotNavigateScreenField.indexOfSelectedItem();
+  showLayerPreview(nibui.hotspotNavigateScreenPreview,
+      (selItem >= 0) ? eligibleNavigateArtboards[selItem] : null);
+  updateSelLayerName();
+}
+
+function setupHotspotShowHideUi() {
+  // identify exportable layers
+  var keys = [];
+  for (var key in layersInArtboardByKey) {
+    if (layersInArtboardByKey[key] != selLayerArtboard) {
+      keys.push(key);
+    }
+  }
+
+  keys.sort();
+  nibui.hotspotShowHideAddLayerField.addItemsWithObjectValues(keys);
+
+  nibui.hotspotShowHideItemTemplateGroup.setHidden(true);
+
+  // create list of show/hide layers
+  currentState.hotspotShowHideLayers = [];
+  if (selLayer._annotations['show']) {
+    currentState.hotspotShowHideLayers = currentState.hotspotShowHideLayers.concat(
+        selLayer._annotations['show']
+            .split(/,/)
+            .map(function(x){ return { name: x, show: true } }));
+  }
+  if (selLayer._annotations['hide']) {
+    currentState.hotspotShowHideLayers = currentState.hotspotShowHideLayers.concat(
+        selLayer._annotations['hide']
+            .split(/,/)
+            .map(function(x){ return { name: x, show: false } }));
+  }
+
+  nibui.attachTargetAndAction(nibui.hotspotShowHideAddButtonGroup,
+      function() {
+        var name = nibui.hotspotShowHideAddLayerField.stringValue();
+        if (!strip(name)) {
+          return;
+        }
+
+        currentState.hotspotShowHideLayers.push({
+          name: name,
+          show: (nibui.hotspotShowHideAddButtonGroup.selectedSegment() == 0)
+        });
+
+        nibui.hotspotShowHideAddLayerField.setStringValue('');
+        updateHotspotUi();
+      });
+
+  nibui.attachTargetAndAction(nibui.hotspotShowHideAddLayerField,
+      function() {
+        updateHotspotUi();
+      });
+}
+
+function updateHotspotShowHideUi() {
+  // Remove any existing items (skip over views 0 and 1, those are the template and add box)
+  for (var i = nibui.hotspotShowHideGroup.subviews().count() - 1; i >= 2; i--) {
+    nibui.hotspotShowHideGroup.subviews().objectAtIndex(i).removeFromSuperview();
+  }
+
+  // Build up a new set of item views
+  var stackingOrder = [];
+  currentState.hotspotShowHideLayers.forEach(function(obj, index) {
+    var itemView = cloneView(nibui.hotspotShowHideItemTemplateGroup);
+    itemView.setHidden(false);
+
+    var removeButtonView = itemView.subviews().objectAtIndex(0);
+    var actionTypeView = itemView.subviews().objectAtIndex(1);
+    var layerNameView = itemView.subviews().objectAtIndex(2);
+
+    layerNameView.setStringValue(obj.name);
+    actionTypeView.setStringValue(obj.show ? 'Show' : 'Hide');
+    nibui.attachTargetAndAction(removeButtonView,
+        function() {
+          currentState.hotspotShowHideLayers.splice(index, 1);
+          updateHotspotUi();
+        });
+
+    stackingOrder.push(itemView);
+    nibui.hotspotShowHideGroup.addSubview(itemView);
+  });
+
+  stackingOrder.push(nibui.hotspotShowHideAddGroup);
+
+  var stackOptions = {spacing: 5, resizeParent: nibui.hotspotShowHideGroup, distToTop: 0};
+  if (stackingOrder.length == 1) {
+    // bottom-origin Y axis for Cocoa UI (srsly?!)
+    stackOptions.startY = nibui.hotspotShowHideAddGroup.frame().size.height;
+  }
+  restackViews(stackingOrder, stackOptions);
+
+  // Show preview
+  var selKey = nibui.hotspotShowHideAddLayerField.objectValueOfSelectedItem();
+  showLayerPreview(nibui.hotspotShowHideAddPreview,
+      selKey ? layersInArtboardByKey[selKey] : null);
+}
+
+function readHotspotUiAnnotations(annotations, properties) {
+  delete annotations.show;
+  delete annotations.hide;
+  delete annotations.navigate;
+
+  var properties = {};
+  if (currentState.hotspotType == 'showhide') {
+    var show = currentState.hotspotShowHideLayers
+        .filter(function(o){ return !!o.show; })
+        .map(function(o){ return o.name.replace(/\s/g, '_'); })
+        .join(',');
+    if (show) {
+      annotations.show = show;
+    }
+
+    var hide = currentState.hotspotShowHideLayers
+        .filter(function(o){ return !o.show; })
+        .map(function(o){ return o.name.replace(/\s/g, '_'); })
+        .join(',');
+    if (hide) {
+      annotations.hide = hide;
+    }
+
+  } else if (currentState.hotspotType == 'navigate') {
+    var val = nibui.hotspotNavigateScreenField.stringValue().replace(/\s/g, '_');
+    if (val) {
+      annotations.navigate = val;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Behaviors tab
+
+var BEHAVIORS_SCROLL_VALUES = {
+  1: 'vertical',
+  2: 'horizontal'
+};
+
+var BEHAVIORS_ANIMATION_VALUES = {
+  1: 'fade',
+  10: 'slideLeft',
+  11: 'slideRight',
+  12: 'slideUp',
+  13: 'slideDown'
+};
+
+function setupBehaviorsUi() {
+  // Select the current hotspot item
+  if (selLayer._annotations['scroll']) {
+    var scroll = selLayer._annotations['scroll'];
+    if (scroll === true) {
+      scroll = 'vertical';
+    }
+
+    for (var tag in BEHAVIORS_SCROLL_VALUES) {
+      if (BEHAVIORS_SCROLL_VALUES[tag] == scroll) {
+        nibui.behaviorsScrollTypeButton.selectItemWithTag(tag);
+        break;
+      }
+    }
+
+  }
+
+  if (selLayer._annotations['animation']) {
+    var animation = selLayer._annotations['animation'];
+    for (var tag in BEHAVIORS_ANIMATION_VALUES) {
+      if (BEHAVIORS_ANIMATION_VALUES[tag] == animation) {
+        nibui.behaviorsAnimationTypeButton.selectItemWithTag(tag);
+        break;
+      }
+    }
+  }
+
+  nibui.behaviorsPagerButton.setState(selLayer._annotations['pager'] ? NSOnState : NSOffState);
+  nibui.attachTargetAndAction(
+      [nibui.behaviorsScrollTypeButton, nibui.behaviorsAnimationTypeButton, nibui.behaviorsPagerButton],
+      function() {
+        updateSelLayerName();
+      });
+}
+
+function readBehaviorsUiAnnotations(annotations, properties) {
+  delete annotations.scroll;
+  delete annotations.pager;
+  delete annotations.animation;
+
+  var tag = nibui.behaviorsScrollTypeButton.selectedTag();
+  if (tag) {
+    annotations.scroll = BEHAVIORS_SCROLL_VALUES[tag];
+  }
+
+  tag = nibui.behaviorsAnimationTypeButton.selectedTag();
+  if (tag) {
+    annotations.animation = BEHAVIORS_ANIMATION_VALUES[tag];
+  }
+
+  if (nibui.behaviorsPagerButton.state() == NSOnState) {
+    annotations.pager = true;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// More tab
+
+function setupMoreUi() {
+  currentState.exportType = null;
+  if (selLayer._ignore) {
+    currentState.exportType = '_ignore';
+  } else if (selLayer._forceOwnImage) {
+    currentState.exportType = '_forceOwnImage';
+  } else if (selLayer._flattenAllChildren) {
+    currentState.exportType = '_flattenAllChildren';
+  }
+
+  nibui.attachTargetAndAction(
+      [nibui.moreExportExcludeButton, nibui.moreExportIncludeButton,
+          nibui.moreExportFlattenButton, nibui.moreExportDefaultButton],
+      function() {
+        currentState.exportType = null;
+        if (nibui.moreExportExcludeButton.state() == NSOnState) {
+          currentState.exportType = '_ignore';
+        } else if (nibui.moreExportIncludeButton.state() == NSOnState) {
+          currentState.exportType = '_forceOwnImage';
+        } else if (nibui.moreExportFlattenButton.state() == NSOnState) {
+          currentState.exportType = '_flattenAllChildren';
+        }
+
+        updateMoreUi();
+      });
+}
+
+function updateMoreUi() {
+  nibui.moreExportDefaultButton.setState((currentState.exportType == null) ? NSOnState : NSOffState);
+  nibui.moreExportExcludeButton.setState((currentState.exportType == '_ignore') ? NSOnState : NSOffState);
+  nibui.moreExportIncludeButton.setState((currentState.exportType == '_forceOwnImage') ? NSOnState : NSOffState);
+  nibui.moreExportFlattenButton.setState((currentState.exportType == '_flattenAllChildren') ? NSOnState : NSOffState);
+  updateSelLayerName();
+}
+
+function readMoreUiAnnotations(annotations, properties) {
+  properties._ignore = (currentState.exportType == '_ignore');
+  properties._forceOwnImage = (currentState.exportType == '_forceOwnImage');
+  properties._flattenAllChildren = (currentState.exportType == '_flattenAllChildren');
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Helpers
+
+function showLayerPreview(imageView, layer) {
+  if (!layer) {
+    imageView.setImage(null);
+    return;
+  }
+
+  var layerId = layer.hash();
+  if (!cachedLayerPreviewImages[layerId]) {
+    cachedLayerPreviewImages[layerId] = captureLayerImage(context, layer);
+  }
+
+  imageView.setImage(cachedLayerPreviewImages[layerId]);
+}

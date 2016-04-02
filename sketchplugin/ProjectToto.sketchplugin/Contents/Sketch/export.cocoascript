@@ -1,0 +1,433 @@
+/*
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Based on Origami v1.1 export - Julius Tarng
+// Based on bomberstudio + cemre's sketch-framer
+// - Exports all groups (append name with * to flatten subgroups) and layers (appended with +), similar to sketch-framer plugin
+@import 'lib/util.js'
+@import 'lib/toto-plugin-common.js';
+
+
+var EXPORT_SCALE_FACTOR = 3;
+var EXPORT_FOLDER = 'screens';
+
+
+var context;
+var layerCount = 0;
+var partialExport;
+var prototypeDirectory;
+var exportDirectory;
+var artboards;
+var tempPage;
+var fileManager = NSFileManager.defaultManager();
+
+var onRun = function(ctx) {
+  context = ctx; // TODO: possibly not safe
+
+  if (!ensureApiVersion(context)) {
+    return;
+  }
+
+  coscript.setShouldKeepAround(true);
+
+  var undoManager = context.document.eventHandlerManager().normalHandler().undoManager();
+  // TODO: if this script fails, enableUndoRegistration() will never be called
+  // see if there's a way to fix that
+  //undoManager.disableUndoRegistration(); // seems to be flaky
+  undoManager.beginUndoGrouping();
+
+  runSequence(
+      stepPrepare,
+      stepIdentifyLayers,
+      stepExportLayers,
+      stepFinish,
+      stepMaybeOpenToto,
+      function(done) {
+        coscript.setShouldKeepAround(false);
+        //undoManager.enableUndoRegistration();
+        undoManager.endUndoGrouping();
+        done();
+      });
+};
+
+
+function stepPrepare(done) {
+  if (!context.document.fileURL()) {
+    showMessage(context, 'Please save the file before exporting.');
+    return;
+  }
+
+  var currentFilePath = context.document.fileURL().path().replace(/\/[^\/]+?$/, '');
+  prototypeDirectory = currentFilePath + '/toto-prototype/';
+  exportDirectory = prototypeDirectory + 'build/' + EXPORT_FOLDER + '/';
+
+  log('Beginning export');
+
+  // create temp page
+  recreateTempPage();
+
+  // by default, export everything on the current page
+  artboards = context.document.currentPage().layers();
+
+  // if selecting a set of artboards, only export the selection
+  var selectedArtboards = [];
+  if (context.selection.count() > 0) {
+    for (var i = 0; i < context.selection.count(); i++) {
+      var selectedObject = context.selection.objectAtIndex(i);
+      if (isArtboard(selectedObject)) {
+        selectedArtboards.push(selectedObject);
+      }
+    }
+  }
+
+  partialExport = false;
+  if (selectedArtboards.length > 0) {
+    partialExport = true;
+    artboards = selectedArtboards;
+  } else {
+    var artboardsArray = [];
+    for (var i = 0; i < artboards.count(); i++) {
+      artboardsArray.push(artboards.objectAtIndex(i));
+    }
+    artboards = artboardsArray;
+  }
+
+  done();
+}
+
+
+function stepIdentifyLayers(done) {
+  layerCount = 0;
+
+  asyncIterate(
+    artboards,
+    function(iter, artboard, index) {
+      // count this artboard's layers and make sure each layer has a key
+      parseLayerName(artboard);
+      markAndIdentifyExportableLayersForArtboard(artboard, function(exportableLayers) {
+        // count them
+        for (var key in exportableLayers) {
+          ++layerCount;
+        }
+
+        iter.next();
+      });
+    },
+    done);
+}
+
+
+function stepExportLayers(done) {
+  var exportedLayerCount = 0;
+
+  // iterate over each artboard
+  asyncIterate(
+    artboards,
+    function(artboardIter, artboard, index) {
+
+      var artboardName = artboard._realName;
+
+      // remove everything in this artboard's export folder
+      var artboardExportDirectory = exportDirectory + sanitizeId(artboardName) + '/';
+      fileManager.removeItemAtPath_error_(artboardExportDirectory, null);
+
+      // duplicate the artboard on the temp page
+      var clonedArtboard = artboard.duplicate();
+      clonedArtboard.removeFromParent();
+      clonedArtboard.frame().setX(0);
+      clonedArtboard.frame().setY(0);
+
+      tempPage.removeAllLayers();
+      tempPage.addLayers([clonedArtboard]);
+      //artboards[index] = artboard;
+
+      parseLayerName(clonedArtboard);
+      clearLayerKeys(clonedArtboard._realName);
+
+      // export each layer within the artboard
+      walkLayerTree(clonedArtboard, wrapInUnpeg(function(layer, iter) {
+        if (!shouldExportLayer(layer)) {
+          iter.finishLayer(null);
+          return;
+        }
+
+        // need to re-make layer key since this is a duplicate layer and JavaScript
+        // properties like _key aren't copied over during duplicate()
+        makeLayerKey(layer, clonedArtboard._realName);
+
+        // export the layer contents, temporarily showing hidden layers
+        layer._hidden = !layer.isVisible();
+        layer._meta = makeBaseLayerMeta(layer);
+        var exportedLayer = exportLayer(context, layer, artboardName);
+
+        // show progress
+        ++exportedLayerCount;
+        context.document.showMessage('Exporting... '
+            + (exportedLayerCount / layerCount * 100).toFixed(0) + '%');
+
+        // visit children
+        if (isGroup(layer) && !layer._flattenAllChildren && !isSymbol(layer)) {
+          iter.walkChildren(onFinishedWalkingChildren_);
+        } else {
+          onFinishedWalkingChildren_([]);
+        }
+
+        function onFinishedWalkingChildren_(childReturnValues) {
+          // write children in ascending Z order (sketch lists layers in descending Z order)
+          var childMetas = childReturnValues.reverse().filter(function(x){ return !!x; });
+          if (childMetas.length) {
+            layer._meta.layers = childMetas;
+          }
+
+          iter.finishLayer(layer._meta);
+        }
+      }), function(artboardMeta) {
+        if (artboardMeta) {
+          writeJSONObject(artboardExportDirectory + 'prototype_screen.json', artboardMeta);
+        }
+
+        artboardIter.next();
+      });
+    },
+    done);
+}
+
+
+function stepFinish(done) {
+  // save scale factor into meta
+  var fileDisplayName = context.document.displayName().replace(/.sketch$/, '');
+  var partialStr = '';
+  if (partialExport) {
+    partialStr = ' ' + artboards.length + ' ';
+    partialStr += (artboards.length > 1) ? 'screens' : 'screen';
+    partialStr += ' in';
+  }
+
+  if (!partialExport) {
+    // find default artboard
+    var defaultArtboard = null;
+    for (var i = 0; i < artboards.length; i++) {
+      var artboard = artboards[i];
+
+      if (!defaultArtboard) {
+        defaultArtboard = artboard;
+      }
+
+      if (artboard._annotations && artboard._annotations['default']) {
+        defaultArtboard = artboard;
+        break;
+      }
+    }
+
+    var screenResolution = [360, 640];
+    var thumbnail = null;
+    if (defaultArtboard) {
+      screenResolution = [defaultArtboard.frame().width(), defaultArtboard.frame().height()];
+
+      // export thumbnail
+      var thumbSlice = MSSliceMaker.slicesFromExportableLayer(defaultArtboard).objectAtIndex(0);
+      thumbSlice.setScale(0.5);
+      thumbSlice.setShouldTrim(false); // doesn't really work as of Sketch 3.4.4
+      thumbnail = EXPORT_FOLDER + '/thumb.png';
+      var thumbPath = exportDirectory + 'thumb.png';
+      context.document.saveArtboardOrSlice_toFile_(thumbSlice, thumbPath);
+    }
+
+    // write meta
+    // TODO: always write this because gulp watches for this to change in order to reload
+    writeJSONObject(exportDirectory + 'prototype_auto_preamble.json', {
+      title: fileDisplayName,
+      screenResolution: screenResolution,
+      thumbnail: thumbnail
+    });
+  }
+
+  writeString(exportDirectory + '.exportcomplete', '');
+
+  showMessageAndLog(context,
+      'Exported ' + layerCount + ' assets for'
+          + partialStr + ' "' + fileDisplayName + '" toto prototype.');
+
+  removeTempPage();
+
+  done();
+}
+
+
+function stepMaybeOpenToto(done) {
+  // TODO: don't always do this?
+  var runningMacApps = NSRunningApplication.runningApplicationsWithBundleIdentifier('net.nurik.roman.Toto');
+  if (!runningMacApps || !runningMacApps.count()) {
+    var alert = NSAlert.alloc().init();
+    alert.setMessageText('Run prototype?');
+    alert.setInformativeText('Do you want to open Project Toto and serve this prototype?');
+    alert.setIcon(NSImage.alloc().initWithContentsOfFile(
+        context.plugin.urlForResourceNamed('UIBundle/Contents/Resources/Icon.icns').path()));
+    alert.addButtonWithTitle('Run Prototype');
+    alert.addButtonWithTitle('No Thanks').setKeyEquivalent('\u{1b}');
+
+    var responseCode = alert.runModal();
+    if (responseCode == NSAlertFirstButtonReturn) {
+      NSWorkspace.sharedWorkspace().openFile_withApplication_andDeactivate_(
+          prototypeDirectory, 'Project Toto', true);
+    }
+  }
+
+  done();
+}
+
+
+// exports a layer image and and of its flattened children, updating the layer meta info
+// in the process
+// this is a destructive operation, and should only be performed on duplicates of layers
+function exportLayer(context, layer, artboardName) {
+  var restoreLayerStates = [];
+
+  // pop out layer if it's masked by an artboard or another layer
+  if (isArtboard(layer.parentGroup()) || layer.closestClippingLayer() != null) {
+    layer.removeFromParent();
+    tempPage.addLayers([layer]);
+  }
+
+  // temporarily reset opacities and visibility of this and ancestor layers
+  var tempLayer = layer;
+  while (!(tempLayer instanceof MSPage)) {
+    tempLayer.setIsVisible(true);
+    tempLayer.style().contextSettings().setOpacity(1);
+    tempLayer = tempLayer.parentGroup();
+  }
+
+  var hasArt = true;
+
+  // hide sublayers that should be exported separately
+  if (isGroup(layer) && !isSymbol(layer)) {
+    // groups by default don't have any art
+    hasArt = false;
+    var subLayers = layer.layers();
+    for (var i = subLayers.count() - 1; i >= 0; i--) {
+      var subLayer = subLayers.objectAtIndex(i);
+
+      if (!layer._flattenAllChildren && shouldExportLayer(subLayer)) {
+        // sublayer should be exported on its own
+        restoreLayerStates.push({ layer: subLayer, visible: subLayer.isVisible() });
+        subLayer.setIsVisible(false);
+      } else if (subLayer.isVisible()) {
+        // sublayer should be flattened into its parent
+        hasArt = true;
+      }
+    }
+  }
+
+  // the layer has artwork, so export it
+  if (hasArt) {
+    var trimRect = MSSliceTrimming.trimmedRectForSlice(layer);
+    trimRect = { x: trimRect.origin.x, y: trimRect.origin.y, w: trimRect.size.width, h: trimRect.size.height };
+    var captureRect = layer.absoluteRect();
+    captureRect = { x: captureRect.x(), y: captureRect.y(), w: captureRect.width(), h: captureRect.height() };
+
+    // account for styling outside layer bounds (e.g. shadows); if the trim rect is actually
+    var stylingMargins = {
+      l: Math.round(Math.max(0, captureRect.x - trimRect.x)),
+      t: Math.round(Math.max(0, captureRect.y - trimRect.y)),
+      r: Math.round(Math.max(0, (trimRect.x + trimRect.w) - (captureRect.x + captureRect.w))),
+      b: Math.round(Math.max(0, (trimRect.y + trimRect.h) - (captureRect.y + captureRect.h)))
+    };
+
+    function expandRectAndRound_(rect, margins) {
+      rect.x = Math.round(rect.x - margins.l);
+      rect.y = Math.round(rect.y - margins.t);
+      rect.w = Math.round(rect.w + margins.l + margins.r);
+      rect.h = Math.round(rect.h + margins.t + margins.b);
+    }
+
+    expandRectAndRound_(captureRect, stylingMargins);
+    expandRectAndRound_(layer._meta, stylingMargins);
+
+    var slice = MSSliceMaker.slicesFromExportableLayer(layer).objectAtIndex(0);
+    slice.setScale(EXPORT_SCALE_FACTOR);
+    slice.setShouldTrim(false); // doesn't really work as of Sketch 3.4.4
+    slice.setRect(CGRectMake(captureRect.x, captureRect.y, captureRect.w, captureRect.h));
+
+    var imagePath = exportDirectory + sanitizeId(artboardName) + '/' + layer._meta.name + '.png';
+    context.document.saveArtboardOrSlice_toFile_(slice, imagePath);
+
+    layer._meta.image = layer._meta.name;
+    if (stylingMargins.l || stylingMargins.t || stylingMargins.r || stylingMargins.b) {
+      layer._meta.stylingMargins = stylingMargins;
+    }
+  }
+
+  // restore ancestor state
+  restoreLayerStates.forEach(function(state) {
+    state.layer.setIsVisible(state.visible);
+  });
+
+  return hasArt;
+}
+
+
+function makeBaseLayerMeta(layer) {
+  var frame = layer.frame();
+
+  var meta = {
+    x: isArtboard(layer) ? 0 : frame.x(),
+    y: isArtboard(layer) ? 0 : frame.y(),
+    w: frame.width(),
+    h: frame.height(),
+    name: layer._key,
+    opacity: layer.style().contextSettings().opacity()
+  };
+
+  if (meta.opacity == 1) {
+    delete meta.opacity;
+  }
+
+  if (layer._annotations) {
+    for (var k in layer._annotations) {
+      meta.annotations = layer._annotations;
+      break;
+    }
+  }
+
+  if (layer._hidden) {
+    meta.annotations = meta.annotations || {};
+    meta.annotations.hidden = true;
+  }
+
+  return meta;
+}
+
+
+function removeTempPage() {
+  var currentPage = context.document.currentPage();
+  var pages = context.document.pages();
+  for (var i = 0; i < pages.count(); i++) {
+    var page = pages.objectAtIndex(i);
+    if (page.name() == '_toto_temp') {
+      context.document.removePage(page);
+    }
+  }
+  context.document.setCurrentPage(currentPage);
+}
+
+
+function recreateTempPage() {
+  var currentPage = context.document.currentPage();
+  removeTempPage();
+  tempPage = context.document.addBlankPage();
+  tempPage.setName('_toto_temp');
+  context.document.setCurrentPage(currentPage);
+}

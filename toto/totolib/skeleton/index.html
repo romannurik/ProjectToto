@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link href="css/toto.css" rel="stylesheet">
+
+  <link rel="icon" sizes="192x192" href="images/icon192.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="images/icon120.png">
+
+  <title>Toto Prototype</title>
+  <!-- begin:plugin-css -->
+  <!-- end:plugin-css -->
+</head>
+<body>
+
+<div class="proto-root-container">
+  <div class="proto-root"></div>
+</div>
+
+<div class="fullscreen-button">
+  <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+  </svg>
+  Fullscreen
+</div>
+
+<div class="footer">
+  <div class="info">
+    Powered by&nbsp;<img class="logo" src="images/toto-logotype.svg">
+  </div>
+</div>
+
+<script src="lib/jquery.min.js"></script>
+<script src="lib/velocity.min.js"></script>
+<script src="lib/fastclick.min.js"></script>
+<script src="js/toto.js"></script>
+
+<!-- begin:plugin-js -->
+<!-- end:plugin-js -->
+
+<script>
+toto.init('.proto-root');
+totoProjectLoader.import('prototype.json', [
+  // begin:project-js
+  // end:project-js
+]);
+</script>
+
+</body>
+</html>

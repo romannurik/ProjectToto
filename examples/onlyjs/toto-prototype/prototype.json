@@ -1,0 +1,6 @@
+{
+  "title" : "onlyjs",
+  "defaultScreen": "main",
+  "showHotspotsOnClick": false,
+  "screenResolution" : [400, 400]
+}
