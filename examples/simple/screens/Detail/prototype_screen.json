@@ -1,0 +1,75 @@
+{
+  "x": 0,
+  "y": 0,
+  "w": 360,
+  "h": 640,
+  "name": "Detail",
+  "image": "Detail",
+  "layers": [
+    {
+      "x": 280,
+      "y": 512,
+      "w": 72,
+      "h": 80,
+      "name": "fab",
+      "image": "fab",
+      "stylingMargins": {
+        "l": 8,
+        "t": 8,
+        "r": 8,
+        "b": 16
+      }
+    },
+    {
+      "x": 0,
+      "y": 592,
+      "w": 360,
+      "h": 48,
+      "name": "navbar",
+      "image": "navbar"
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 24,
+      "name": "status_bar",
+      "image": "status_bar"
+    },
+    {
+      "x": -4,
+      "y": -4,
+      "w": 368,
+      "h": 204,
+      "name": "app_bar",
+      "image": "app_bar",
+      "stylingMargins": {
+        "l": 4,
+        "t": 4,
+        "r": 4,
+        "b": 8
+      },
+      "layers": [
+        {
+          "x": 4,
+          "y": 28,
+          "w": 48,
+          "h": 48,
+          "name": "back",
+          "annotations": {
+            "navigate": "Main"
+          },
+          "image": "back"
+        },
+        {
+          "x": 332,
+          "y": 40,
+          "w": 12,
+          "h": 24,
+          "name": "more",
+          "image": "more"
+        }
+      ]
+    }
+  ]
+}

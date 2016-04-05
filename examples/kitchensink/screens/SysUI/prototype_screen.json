@@ -1,0 +1,35 @@
+{
+  "x": 0,
+  "y": 0,
+  "w": 360,
+  "h": 640,
+  "name": "SysUI",
+  "layers": [
+    {
+      "x": 0,
+      "y": 592,
+      "w": 360,
+      "h": 48,
+      "name": "navbar",
+      "image": "navbar",
+      "layers": [
+        {
+          "x": 30,
+          "y": 0,
+          "w": 106,
+          "h": 48,
+          "name": "system_back",
+          "image": "system_back"
+        }
+      ]
+    },
+    {
+      "x": 242,
+      "y": 0,
+      "w": 118,
+      "h": 24,
+      "name": "status_bar_contents",
+      "image": "status_bar_contents"
+    }
+  ]
+}

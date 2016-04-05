@@ -1,0 +1,757 @@
+{
+  "title": "Kitchen Sink",
+  "screenResolution": [
+    360,
+    640
+  ],
+  "thumbnail": "screens/thumb.png",
+  "screens": [
+    {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 640,
+      "name": "Detail",
+      "annotations": {
+        "include": "SysUI"
+      },
+      "image": "Detail",
+      "layers": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 640,
+          "name": "action_overflow",
+          "annotations": {
+            "hide": "action_overflow",
+            "hidden": true
+          },
+          "image": "action_overflow",
+          "layers": [
+            {
+              "x": 252,
+              "y": 108,
+              "w": 40,
+              "h": 18,
+              "name": "About",
+              "image": "About"
+            },
+            {
+              "x": 252,
+              "y": 76,
+              "w": 31,
+              "h": 18,
+              "name": "Help",
+              "image": "Help"
+            },
+            {
+              "x": 252,
+              "y": 44,
+              "w": 55,
+              "h": 18,
+              "name": "Settings",
+              "image": "Settings"
+            }
+          ]
+        },
+        {
+          "x": 116,
+          "y": 128,
+          "w": 128,
+          "h": 128,
+          "name": "avatar",
+          "image": "avatar"
+        },
+        {
+          "x": -999999,
+          "y": -999999,
+          "w": 360,
+          "h": 24,
+          "name": "status_bar",
+          "image": "status_bar",
+          "layers": [
+            {
+              "x": 0,
+              "y": 0,
+              "w": 360,
+              "h": 24,
+              "name": "status_bar_bg",
+              "image": "status_bar_bg"
+            }
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 192,
+          "name": "app_bar",
+          "image": "app_bar",
+          "layers": [
+            {
+              "x": 4,
+              "y": 28,
+              "w": 48,
+              "h": 48,
+              "name": "back",
+              "image": "back"
+            },
+            {
+              "x": 320,
+              "y": 28,
+              "w": 36,
+              "h": 48,
+              "name": "more",
+              "annotations": {
+                "show": "action_overflow"
+              },
+              "image": "more"
+            }
+          ]
+        },
+        {
+          "x": 107,
+          "y": 272,
+          "w": 147,
+          "h": 24,
+          "name": "Bryan_McDonald",
+          "image": "Bryan_McDonald"
+        }
+      ]
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 640,
+      "name": "List",
+      "annotations": {
+        "include": [
+          "SysUI",
+          "SideNav"
+        ],
+        "default": true
+      },
+      "image": "List",
+      "layers": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 640,
+          "name": "add_sheet_container",
+          "layers": [
+            {
+              "x": -4,
+              "y": 440,
+              "w": 368,
+              "h": 160,
+              "name": "add_sheet",
+              "annotations": {
+                "animation": "slideUp",
+                "hidden": true
+              },
+              "image": "add_sheet",
+              "stylingMargins": {
+                "l": 4,
+                "t": 4,
+                "r": 4,
+                "b": 8
+              },
+              "layers": [
+                {
+                  "x": 24,
+                  "y": 24,
+                  "w": 312,
+                  "h": 48,
+                  "name": "text_field",
+                  "image": "text_field"
+                },
+                {
+                  "x": 202,
+                  "y": 86,
+                  "w": 136,
+                  "h": 42,
+                  "name": "button",
+                  "image": "button",
+                  "stylingMargins": {
+                    "l": 2,
+                    "t": 2,
+                    "r": 2,
+                    "b": 4
+                  }
+                }
+              ]
+            },
+            {
+              "x": 0,
+              "y": 0,
+              "w": 360,
+              "h": 640,
+              "name": "add_sheet_scrim",
+              "annotations": {
+                "animation": "fade",
+                "hide": "add_sheet_scrim,add_sheet",
+                "hidden": true
+              },
+              "image": "add_sheet_scrim"
+            }
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 24,
+          "name": "status_bar_bg",
+          "image": "status_bar_bg"
+        },
+        {
+          "x": -4,
+          "y": -4,
+          "w": 368,
+          "h": 148,
+          "name": "app_bar",
+          "image": "app_bar",
+          "stylingMargins": {
+            "l": 4,
+            "t": 4,
+            "r": 4,
+            "b": 8
+          },
+          "layers": [
+            {
+              "x": 0,
+              "y": 88,
+              "w": 360,
+              "h": 48,
+              "name": "tabs",
+              "annotations": {
+                "scroll": "horizontal",
+                "tabs": "content"
+              },
+              "image": "tabs",
+              "layers": [
+                {
+                  "x": 60,
+                  "y": 0,
+                  "w": 376,
+                  "h": 48,
+                  "name": "tabs_contents",
+                  "image": "tabs_contents",
+                  "layers": [
+                    {
+                      "x": 0,
+                      "y": 46,
+                      "w": 80,
+                      "h": 2,
+                      "name": "tab_indicator",
+                      "annotations": {
+                        "tabindicator": true
+                      },
+                      "image": "tab_indicator"
+                    },
+                    {
+                      "x": 0,
+                      "y": 0,
+                      "w": 376,
+                      "h": 48,
+                      "name": "tab_targets",
+                      "annotations": {
+                        "tabtargets": true
+                      },
+                      "layers": [
+                        {
+                          "x": 0,
+                          "y": 0,
+                          "w": 80,
+                          "h": 48,
+                          "name": "tab1_target",
+                          "image": "tab1_target"
+                        },
+                        {
+                          "x": 80,
+                          "y": 0,
+                          "w": 71,
+                          "h": 48,
+                          "name": "tab2_target",
+                          "opacity": 0.4,
+                          "image": "tab2_target"
+                        },
+                        {
+                          "x": 151,
+                          "y": 0,
+                          "w": 114,
+                          "h": 48,
+                          "name": "tab3_target",
+                          "opacity": 0.4,
+                          "image": "tab3_target"
+                        },
+                        {
+                          "x": 265,
+                          "y": 0,
+                          "w": 111,
+                          "h": 48,
+                          "name": "tab4_target",
+                          "opacity": 0.4,
+                          "image": "tab4_target"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "x": 4,
+              "y": 28,
+              "w": 48,
+              "h": 48,
+              "name": "menu",
+              "annotations": {
+                "show": "drawer,drawer_scrim"
+              },
+              "image": "menu"
+            },
+            {
+              "x": 332,
+              "y": 40,
+              "w": 12,
+              "h": 24,
+              "name": "more",
+              "image": "more"
+            }
+          ]
+        },
+        {
+          "x": 280,
+          "y": 512,
+          "w": 72,
+          "h": 80,
+          "name": "fab",
+          "annotations": {
+            "show": "add_sheet_scrim,add_sheet"
+          },
+          "image": "fab",
+          "stylingMargins": {
+            "l": 8,
+            "t": 8,
+            "r": 8,
+            "b": 16
+          },
+          "layers": [
+            {
+              "x": 16,
+              "y": 16,
+              "w": 24,
+              "h": 24,
+              "name": "add",
+              "image": "add"
+            }
+          ]
+        },
+        {
+          "x": 0,
+          "y": 136,
+          "w": 360,
+          "h": 456,
+          "name": "content",
+          "annotations": {
+            "pager": true
+          },
+          "layers": [
+            {
+              "x": 0,
+              "y": 0,
+              "w": 360,
+              "h": 456,
+              "name": "tab1",
+              "annotations": {
+                "scroll": true
+              },
+              "image": "tab1",
+              "layers": [
+                {
+                  "x": 0,
+                  "y": 8,
+                  "w": 360,
+                  "h": 648,
+                  "name": "list_1",
+                  "layers": [
+                    {
+                      "x": 0,
+                      "y": 0,
+                      "w": 360,
+                      "h": 72,
+                      "name": "row_target",
+                      "image": "row_target",
+                      "layers": [
+                        {
+                          "x": 16,
+                          "y": 16,
+                          "w": 40,
+                          "h": 40,
+                          "name": "avatar",
+                          "image": "avatar"
+                        },
+                        {
+                          "x": 73,
+                          "y": 17,
+                          "w": 117,
+                          "h": 19,
+                          "name": "Bryan_McDonald",
+                          "image": "Bryan_McDonald"
+                        }
+                      ]
+                    },
+                    {
+                      "x": 0,
+                      "y": 72,
+                      "w": 360,
+                      "h": 72,
+                      "name": "row_7",
+                      "image": "row_7"
+                    },
+                    {
+                      "x": 0,
+                      "y": 144,
+                      "w": 360,
+                      "h": 72,
+                      "name": "row_6",
+                      "image": "row_6"
+                    },
+                    {
+                      "x": 0,
+                      "y": 216,
+                      "w": 360,
+                      "h": 72,
+                      "name": "row_5",
+                      "image": "row_5"
+                    },
+                    {
+                      "x": 0,
+                      "y": 288,
+                      "w": 360,
+                      "h": 72,
+                      "name": "row_4",
+                      "image": "row_4"
+                    },
+                    {
+                      "x": 0,
+                      "y": 360,
+                      "w": 360,
+                      "h": 72,
+                      "name": "row_3",
+                      "image": "row_3"
+                    },
+                    {
+                      "x": 0,
+                      "y": 432,
+                      "w": 360,
+                      "h": 72,
+                      "name": "row_2",
+                      "image": "row_2"
+                    },
+                    {
+                      "x": 0,
+                      "y": 504,
+                      "w": 360,
+                      "h": 72,
+                      "name": "row_1",
+                      "image": "row_1"
+                    },
+                    {
+                      "x": 0,
+                      "y": 576,
+                      "w": 360,
+                      "h": 72,
+                      "name": "row",
+                      "image": "row"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "x": 0,
+              "y": 0,
+              "w": 360,
+              "h": 456,
+              "name": "tab2",
+              "image": "tab2"
+            },
+            {
+              "x": 0,
+              "y": 0,
+              "w": 360,
+              "h": 456,
+              "name": "tab3",
+              "image": "tab3"
+            },
+            {
+              "x": 0,
+              "y": 0,
+              "w": 360,
+              "h": 456,
+              "name": "tab4",
+              "image": "tab4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 640,
+      "name": "SideNav",
+      "layers": [
+        {
+          "x": -18,
+          "y": -9,
+          "w": 340,
+          "h": 628,
+          "name": "drawer",
+          "annotations": {
+            "animation": "slideRight",
+            "hidden": true
+          },
+          "image": "drawer",
+          "stylingMargins": {
+            "l": 18,
+            "t": 9,
+            "r": 18,
+            "b": 27
+          },
+          "layers": [
+            {
+              "x": 0,
+              "y": 0,
+              "w": 304,
+              "h": 24,
+              "name": "status_bar_bg",
+              "image": "status_bar_bg"
+            },
+            {
+              "x": -4,
+              "y": 536,
+              "w": 312,
+              "h": 64,
+              "name": "floating_panel",
+              "image": "floating_panel",
+              "stylingMargins": {
+                "l": 4,
+                "t": 4,
+                "r": 4,
+                "b": 8
+              }
+            },
+            {
+              "x": 0,
+              "y": 0,
+              "w": 304,
+              "h": 592,
+              "name": "side_nav_content",
+              "annotations": {
+                "scroll": true
+              },
+              "image": "side_nav_content",
+              "layers": [
+                {
+                  "x": -1,
+                  "y": 192,
+                  "w": 306,
+                  "h": 429,
+                  "name": "list",
+                  "image": "list",
+                  "stylingMargins": {
+                    "l": 1,
+                    "t": 0,
+                    "r": 1,
+                    "b": 0
+                  },
+                  "layers": [
+                    {
+                      "x": 16,
+                      "y": 0,
+                      "w": 24,
+                      "h": 429,
+                      "name": "icons",
+                      "layers": [
+                        {
+                          "x": 0,
+                          "y": 309,
+                          "w": 24,
+                          "h": 25,
+                          "name": "promos",
+                          "image": "promos"
+                        },
+                        {
+                          "x": 0,
+                          "y": 405,
+                          "w": 24,
+                          "h": 24,
+                          "name": "social",
+                          "image": "social"
+                        },
+                        {
+                          "x": 0,
+                          "y": 261,
+                          "w": 24,
+                          "h": 25,
+                          "name": "updates",
+                          "image": "updates"
+                        },
+                        {
+                          "x": 0,
+                          "y": 213,
+                          "w": 24,
+                          "h": 25,
+                          "name": "forums",
+                          "image": "forums"
+                        },
+                        {
+                          "x": 0,
+                          "y": 48,
+                          "w": 24,
+                          "h": 24,
+                          "name": "outbox",
+                          "image": "outbox"
+                        },
+                        {
+                          "x": 0,
+                          "y": 165,
+                          "w": 24,
+                          "h": 24,
+                          "name": "spam",
+                          "image": "spam"
+                        },
+                        {
+                          "x": 0,
+                          "y": 117,
+                          "w": 24,
+                          "h": 24,
+                          "name": "trash",
+                          "image": "trash"
+                        },
+                        {
+                          "x": 0,
+                          "y": 357,
+                          "w": 24,
+                          "h": 25,
+                          "name": "purchases",
+                          "image": "purchases"
+                        },
+                        {
+                          "x": 0,
+                          "y": 0,
+                          "w": 24,
+                          "h": 24,
+                          "name": "inbox",
+                          "image": "inbox"
+                        }
+                      ]
+                    },
+                    {
+                      "x": 72,
+                      "y": 3,
+                      "w": 67,
+                      "h": 421,
+                      "name": "labels",
+                      "image": "labels"
+                    }
+                  ]
+                },
+                {
+                  "x": 0,
+                  "y": 0,
+                  "w": 304,
+                  "h": 172,
+                  "name": "account_switcher",
+                  "image": "account_switcher",
+                  "layers": [
+                    {
+                      "x": 16,
+                      "y": 40,
+                      "w": 64,
+                      "h": 64,
+                      "name": "account_avatar",
+                      "image": "account_avatar"
+                    },
+                    {
+                      "x": 264,
+                      "y": 135,
+                      "w": 24,
+                      "h": 24,
+                      "name": "triangle",
+                      "image": "triangle"
+                    }
+                  ]
+                },
+                {
+                  "x": 0,
+                  "y": 548,
+                  "w": 304,
+                  "h": 151,
+                  "name": "spacer",
+                  "opacity": 0,
+                  "image": "spacer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 592,
+          "name": "drawer_scrim",
+          "annotations": {
+            "animation": "fade",
+            "hide": "drawer,drawer_scrim",
+            "hidden": true
+          },
+          "image": "drawer_scrim"
+        }
+      ]
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 640,
+      "name": "SysUI",
+      "layers": [
+        {
+          "x": 0,
+          "y": 592,
+          "w": 360,
+          "h": 48,
+          "name": "navbar",
+          "image": "navbar",
+          "layers": [
+            {
+              "x": 30,
+              "y": 0,
+              "w": 106,
+              "h": 48,
+              "name": "system_back",
+              "image": "system_back"
+            }
+          ]
+        },
+        {
+          "x": 242,
+          "y": 0,
+          "w": 118,
+          "h": 24,
+          "name": "status_bar_contents",
+          "image": "status_bar_contents"
+        }
+      ]
+    }
+  ]
+}

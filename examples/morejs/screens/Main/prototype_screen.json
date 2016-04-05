@@ -1,0 +1,476 @@
+{
+  "x": 0,
+  "y": 0,
+  "w": 360,
+  "h": 640,
+  "name": "Main",
+  "image": "Main",
+  "layers": [
+    {
+      "x": 0,
+      "y": 592,
+      "w": 360,
+      "h": 48,
+      "name": "navbar",
+      "image": "navbar"
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 24,
+      "name": "status_bar",
+      "image": "status_bar",
+      "layers": [
+        {
+          "x": 242,
+          "y": 0,
+          "w": 118,
+          "h": 24,
+          "name": "status_bar_contents",
+          "image": "status_bar_contents"
+        }
+      ]
+    },
+    {
+      "x": -4,
+      "y": -4,
+      "w": 368,
+      "h": 204,
+      "name": "app_bar",
+      "image": "app_bar",
+      "stylingMargins": {
+        "l": 4,
+        "t": 4,
+        "r": 4,
+        "b": 8
+      },
+      "layers": [
+        {
+          "x": 16,
+          "y": 152,
+          "w": 68,
+          "h": 24,
+          "name": "title",
+          "image": "title"
+        },
+        {
+          "x": 332,
+          "y": 40,
+          "w": 12,
+          "h": 24,
+          "name": "more",
+          "image": "more"
+        }
+      ]
+    },
+    {
+      "x": 0,
+      "y": 73,
+      "w": 360,
+      "h": 519,
+      "name": "cards",
+      "annotations": {
+        "scroll": true
+      },
+      "image": "cards",
+      "layers": [
+        {
+          "x": 0,
+          "y": 127,
+          "w": 360,
+          "h": 706,
+          "name": "Group",
+          "image": "Group",
+          "layers": [
+            {
+              "x": 6,
+              "y": 622,
+              "w": 172,
+              "h": 62,
+              "name": "clean",
+              "image": "clean",
+              "stylingMargins": {
+                "l": 2,
+                "t": 2,
+                "r": 2,
+                "b": 4
+              },
+              "layers": [
+                {
+                  "x": 16,
+                  "y": 14,
+                  "w": 123,
+                  "h": 24,
+                  "name": "Clean_desk",
+                  "image": "Clean_desk"
+                }
+              ]
+            },
+            {
+              "x": 6,
+              "y": 454,
+              "w": 172,
+              "h": 166,
+              "name": "tickets",
+              "image": "tickets",
+              "stylingMargins": {
+                "l": 2,
+                "t": 2,
+                "r": 2,
+                "b": 4
+              },
+              "layers": [
+                {
+                  "x": 136,
+                  "y": 126,
+                  "w": 24,
+                  "h": 24,
+                  "name": "today",
+                  "image": "today"
+                },
+                {
+                  "x": 16,
+                  "y": 134,
+                  "w": 72,
+                  "h": 14,
+                  "name": "May_24_2014",
+                  "image": "May_24_2014"
+                },
+                {
+                  "x": 0,
+                  "y": 119,
+                  "w": 168,
+                  "h": 2,
+                  "name": "Line_3",
+                  "image": "Line_3"
+                },
+                {
+                  "x": 16,
+                  "y": 14,
+                  "w": 123,
+                  "h": 72,
+                  "name": "Yuna_tickets_on_sale",
+                  "image": "Yuna_tickets_on_sale"
+                }
+              ]
+            },
+            {
+              "x": 182,
+              "y": 454,
+              "w": 172,
+              "h": 230,
+              "name": "groceries",
+              "image": "groceries",
+              "stylingMargins": {
+                "l": 2,
+                "t": 2,
+                "r": 2,
+                "b": 4
+              },
+              "layers": [
+                {
+                  "x": 48,
+                  "y": 147,
+                  "w": 80,
+                  "h": 16,
+                  "name": "green_apples_2",
+                  "image": "green_apples_2"
+                },
+                {
+                  "x": 48,
+                  "y": 115,
+                  "w": 63,
+                  "h": 16,
+                  "name": "cucumber_2",
+                  "image": "cucumber_2"
+                },
+                {
+                  "x": 48,
+                  "y": 83,
+                  "w": 89,
+                  "h": 16,
+                  "name": "coconut_water_2",
+                  "image": "coconut_water_2"
+                },
+                {
+                  "x": 48,
+                  "y": 51,
+                  "w": 77,
+                  "h": 16,
+                  "name": "almond_milk_2",
+                  "image": "almond_milk_2"
+                },
+                {
+                  "x": 16,
+                  "y": 13,
+                  "w": 53,
+                  "h": 14,
+                  "name": "Groceries_2",
+                  "image": "Groceries_2"
+                },
+                {
+                  "x": 13,
+                  "y": 144,
+                  "w": 24,
+                  "h": 24,
+                  "name": "checkbox_outline_3",
+                  "image": "checkbox_outline_3"
+                },
+                {
+                  "x": 13,
+                  "y": 112,
+                  "w": 24,
+                  "h": 24,
+                  "name": "checkbox_outline_2",
+                  "image": "checkbox_outline_2"
+                },
+                {
+                  "x": 13,
+                  "y": 80,
+                  "w": 24,
+                  "h": 24,
+                  "name": "checkbox_outline_1",
+                  "image": "checkbox_outline_1"
+                },
+                {
+                  "x": 13,
+                  "y": 48,
+                  "w": 24,
+                  "h": 24,
+                  "name": "checkbox_outline",
+                  "image": "checkbox_outline"
+                },
+                {
+                  "x": 136,
+                  "y": 192,
+                  "w": 24,
+                  "h": 24,
+                  "name": "place",
+                  "image": "place"
+                },
+                {
+                  "x": 16,
+                  "y": 198,
+                  "w": 51,
+                  "h": 14,
+                  "name": "Campbell_2",
+                  "image": "Campbell_2"
+                },
+                {
+                  "x": 0,
+                  "y": 183,
+                  "w": 168,
+                  "h": 2,
+                  "name": "Line_2",
+                  "image": "Line_2"
+                }
+              ]
+            },
+            {
+              "x": 182,
+              "y": 230,
+              "w": 172,
+              "h": 222,
+              "name": "airlines",
+              "image": "airlines",
+              "stylingMargins": {
+                "l": 2,
+                "t": 2,
+                "r": 2,
+                "b": 4
+              },
+              "layers": [
+                {
+                  "x": 18,
+                  "y": 101,
+                  "w": 128,
+                  "h": 48,
+                  "name": "Best_Airlines",
+                  "image": "Best_Airlines"
+                },
+                {
+                  "x": 0,
+                  "y": 0,
+                  "w": 168,
+                  "h": 168,
+                  "name": "image_placeholder_1",
+                  "image": "image_placeholder_1"
+                },
+                {
+                  "x": 24,
+                  "y": 180,
+                  "w": 120,
+                  "h": 23.999999999999996,
+                  "name": "Buttons_2",
+                  "layers": [
+                    {
+                      "x": 0,
+                      "y": 0,
+                      "w": 24,
+                      "h": 24,
+                      "name": "favorite_2",
+                      "image": "favorite_2"
+                    },
+                    {
+                      "x": 48,
+                      "y": 0,
+                      "w": 24,
+                      "h": 24,
+                      "name": "bookmark_2",
+                      "image": "bookmark_2"
+                    },
+                    {
+                      "x": 96,
+                      "y": 0,
+                      "w": 24,
+                      "h": 24,
+                      "name": "share_2",
+                      "image": "share_2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "x": 6,
+              "y": 230,
+              "w": 172,
+              "h": 222,
+              "name": "road_trips",
+              "image": "road_trips",
+              "stylingMargins": {
+                "l": 2,
+                "t": 2,
+                "r": 2,
+                "b": 4
+              },
+              "layers": [
+                {
+                  "x": 18,
+                  "y": 101,
+                  "w": 128,
+                  "h": 51,
+                  "name": "road_trip_text",
+                  "image": "road_trip_text",
+                  "stylingMargins": {
+                    "l": 0,
+                    "t": 0,
+                    "r": 0,
+                    "b": 3
+                  }
+                },
+                {
+                  "x": 0,
+                  "y": 0,
+                  "w": 168,
+                  "h": 168,
+                  "name": "road_trip_image",
+                  "image": "road_trip_image"
+                },
+                {
+                  "x": 24,
+                  "y": 180,
+                  "w": 120,
+                  "h": 23.999999999999996,
+                  "name": "Buttons_1",
+                  "layers": [
+                    {
+                      "x": 0,
+                      "y": 0,
+                      "w": 24,
+                      "h": 24,
+                      "name": "favorite_1",
+                      "image": "favorite_1"
+                    },
+                    {
+                      "x": 48,
+                      "y": 0,
+                      "w": 24,
+                      "h": 24,
+                      "name": "bookmark_1",
+                      "image": "bookmark_1"
+                    },
+                    {
+                      "x": 96,
+                      "y": 0,
+                      "w": 24,
+                      "h": 24,
+                      "name": "share_1",
+                      "image": "share_1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "x": 6,
+              "y": -2,
+              "w": 348,
+              "h": 230,
+              "name": "homes",
+              "image": "homes",
+              "stylingMargins": {
+                "l": 2,
+                "t": 2,
+                "r": 2,
+                "b": 4
+              },
+              "layers": [
+                {
+                  "x": 209,
+                  "y": 188,
+                  "w": 119,
+                  "h": 24,
+                  "name": "Buttons",
+                  "layers": [
+                    {
+                      "x": 0,
+                      "y": 0,
+                      "w": 25,
+                      "h": 24,
+                      "name": "favorite",
+                      "image": "favorite"
+                    },
+                    {
+                      "x": 47,
+                      "y": 0,
+                      "w": 24,
+                      "h": 24,
+                      "name": "bookmark",
+                      "image": "bookmark"
+                    },
+                    {
+                      "x": 95,
+                      "y": 0,
+                      "w": 24,
+                      "h": 24,
+                      "name": "share",
+                      "image": "share"
+                    }
+                  ]
+                },
+                {
+                  "x": 19,
+                  "y": 133,
+                  "w": 161,
+                  "h": 24,
+                  "name": "Pre_fab_Homes_2",
+                  "image": "Pre_fab_Homes_2"
+                },
+                {
+                  "x": 0,
+                  "y": 0,
+                  "w": 344,
+                  "h": 176,
+                  "name": "image_placeholder",
+                  "image": "image_placeholder"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

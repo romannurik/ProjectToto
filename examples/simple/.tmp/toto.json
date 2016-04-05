@@ -1,0 +1,8 @@
+{
+  "defaultScreen": "",
+  "plugins": [
+    "hotspot",
+    "animate",
+    "scroll"
+  ]
+}

@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  <link href="toto.css" rel="stylesheet">
+
+  <link rel="icon" sizes="192x192" href="icon192.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="icon120.png">
+
+  <title>Toto Prototype</title>
+  <!-- begin:plugin-css -->
+  <link href="plugins/hotspot/hotspot.css" rel="stylesheet">
+  <link href="plugins/scroll/scroll.css" rel="stylesheet">
+  <link href="plugins/animate/animate.css" rel="stylesheet">
+  <!-- end:plugin-css -->
+  <!-- begin:localplugin-css -->
+  <!-- end:localplugin-css -->
+</head>
+<body>
+
+<div class="fullscreen-dialog">
+  <div class="text">Touch anywhere to see prototype.</div>
+  <button class="fullscreen-button">Go fullscreen</button>
+</div>
+
+<div class="meta">
+  <div class="info">
+    Prototype built with
+    <svg class="logo" width="600" height="120" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+      <path d="M360 40h-40v40h40v40h40V80h40V40h-40V0h-40v40zM40 40H0v40h40v40h40V80h40V40H80V0H40v40zm180 80c33.137 0 60-26.863 60-60S253.137 0 220 0s-60 26.863-60 60 26.863 60 60 60zm0-40c11.046 0 20-8.954 20-20s-8.954-20-20-20-20 8.954-20 20 8.954 20 20 20zm320 40c33.137 0 60-26.863 60-60S573.137 0 540 0s-60 26.863-60 60 26.863 60 60 60zm0-40c11.046 0 20-8.954 20-20s-8.954-20-20-20-20 8.954-20 20 8.954 20 20 20z" fill="#FF237B" fill-rule="evenodd"/>
+    </svg>
+  </div>
+</div>
+
+<div class="proto-root-container">
+  <div class="proto-root"></div>
+</div>
+
+<script src="jquery.min.js"></script>
+<script src="fastclick.min.js"></script>
+<script src="toto.js"></script>
+<!-- begin:plugin-js -->
+<script src="plugins/hotspot/hotspot.js"></script>
+<script src="plugins/scroll/scroll.js"></script>
+<script src="plugins/animate/animate.js"></script>
+<!-- end:plugin-js -->
+<!-- begin:localplugin-js -->
+<!-- end:localplugin-js -->
+<script>
+
+var projectScripts = [
+"Main.js",
+"Road_Trips.js",
+];
+
+$.when(
+    $.ajax({url: 'data.json', dataType: 'json'}),
+    $.ajax({url: 'toto.json', dataType: 'json'})
+  )
+  .done(function(r1, r2) {
+    var totoConfig = r2[0];
+    var defaultScreen;
+    if (totoConfig && totoConfig.defaultScreen) {
+      defaultScreen = totoConfig.defaultScreen;
+    }
+
+    var data = r1[0];
+    TotoInternal.rebuild(data);
+    var getScriptPromises = projectScripts
+        .filter(function(x){ return !!x; })
+        .map(function(s){ return $.ajax({url:s, dataType:'text'}); });
+    $.when.apply(null, getScriptPromises)
+        .done(function() {
+          for (var i = 0; i < projectScripts.length; i++) {
+            var screenName = projectScripts[i].replace(/.js/, '');
+            var scriptContents = projectScripts.length == 1 ? arguments[0] : arguments[i][0];
+
+            scriptContents = [
+              //'with (Toto.getScreen("', screenName, '")) {\n',
+              'var ___SCREEN___ = Toto.getScreen("', screenName, '");\n',
+              '(function(screen, $) {\n',
+              scriptContents,
+              '\n})(___SCREEN___, ___SCREEN___.$.bind(___SCREEN___));\n',
+              //'\n}'
+            ].join('');
+            $.globalEval(scriptContents);
+          }
+
+          TotoInternal.loadScreenFromHash(defaultScreen);
+        })
+        .fail(function(jqxhr, settings, exception) {
+          console.error(exception);
+        });
+  });
+
+</script>
+
+</body>
+</html>

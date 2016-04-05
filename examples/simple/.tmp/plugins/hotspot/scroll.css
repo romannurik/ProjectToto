@@ -1,0 +1,17 @@
+.screen .group.scroll-vertical {
+  pointer-events: all;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.screen .group.scroll-horizontal {
+  pointer-events: all;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.screen .group.scroll-horizontal::-webkit-scrollbar {
+  display: none;
+}
+
+.screen .pager {
+  pointer-events: all;
+}

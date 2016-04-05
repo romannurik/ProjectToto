@@ -1,0 +1,23 @@
+.screen .hotspot {
+  cursor: pointer;
+  pointer-events: auto;
+}
+.screen .hotspot:after {
+  transition: opacity 0.2s ease;
+  opacity: 0;
+  box-shadow: 0 0 0 1px rgba(245, 0, 87, 0.5);
+  border: 1px solid rgba(255, 194, 216, 0.5);
+  border-radius: 1px;
+  background-color: rgba(245, 0, 87, 0.25);
+  outline-offset: 0;
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  content: '';
+  z-index: 10000;
+}
+.show-targets .screen .hotspot:after {
+  opacity: 1;
+}

@@ -1,0 +1,8 @@
+{
+  "defaultScreen": "Main",
+  "plugins": [
+    "hotspot",
+    "scroll",
+    "animate"
+  ]
+}

@@ -1,0 +1,44 @@
+.screen .animate-fade {
+  transition: opacity 0.3s;
+  opacity: 1;
+}
+.screen .animate-fade.hidden {
+  transition: visibility 0s linear 0.3s, opacity 0.3s;
+  opacity: 0 !important;
+}
+.screen .animate-slideRight, .screen .animate-slideUp, .screen .animate-slideLeft, .screen .animate-slideDown {
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+}
+.screen .animate-slideRight.hidden, .screen .animate-slideUp.hidden, .screen .animate-slideLeft.hidden, .screen .animate-slideDown.hidden {
+  transition: visibility 0s linear 0.3s, -webkit-transform 0.3s;
+  transition: visibility 0s linear 0.3s, transform 0.3s;
+}
+.screen .animate-slideRight.hidden {
+  -webkit-transform: translate3d(-100%, 0, 0);
+          transform: translate3d(-100%, 0, 0);
+}
+.screen .animate-slideUp.hidden {
+  -webkit-transform: translate3d(0, 100%, 0);
+          transform: translate3d(0, 100%, 0);
+}
+.screen.transition-fade:not(.overlay) {
+  transition: visibility 0s linear 0.3s, opacity 0.3s ease 0s;
+}
+.screen.transition-fade:not(.overlay).current {
+  transition: opacity 0.3s ease 0.3s;
+}
+.screen.overlay {
+  background: transparent;
+  pointer-events: none;
+  visibility: visible;
+  opacity: 1;
+  z-index: 10;
+}
+.screen.overlay .tween {
+  transition: -webkit-transform 0.6s ease;
+  transition: transform 0.6s ease;
+}

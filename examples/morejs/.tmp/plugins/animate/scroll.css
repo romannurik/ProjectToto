@@ -1,0 +1,35 @@
+.screen .group.scroll-vertical {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.screen .group.scroll-horizontal {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.screen .group.scroll-horizontal::-webkit-scrollbar {
+  display: none;
+}
+.screen .group.scroll-horizontal, .screen .group.scroll-vertical {
+  pointer-events: auto;
+  cursor: -webkit-grab;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+}
+.screen .group.scroll-horizontal.engaged, .screen .group.scroll-vertical.engaged {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+.screen .pager {
+  pointer-events: auto;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+.screen .pager.engaged {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+.screen .pager.engaged .scroll-horizontal, .screen .pager.engaged .scroll-vertical {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}

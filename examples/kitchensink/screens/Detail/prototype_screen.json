@@ -1,0 +1,114 @@
+{
+  "x": 0,
+  "y": 0,
+  "w": 360,
+  "h": 640,
+  "name": "Detail",
+  "annotations": {
+    "include": "SysUI"
+  },
+  "image": "Detail",
+  "layers": [
+    {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 640,
+      "name": "action_overflow",
+      "annotations": {
+        "hide": "action_overflow",
+        "hidden": true
+      },
+      "image": "action_overflow",
+      "layers": [
+        {
+          "x": 252,
+          "y": 108,
+          "w": 40,
+          "h": 18,
+          "name": "About",
+          "image": "About"
+        },
+        {
+          "x": 252,
+          "y": 76,
+          "w": 31,
+          "h": 18,
+          "name": "Help",
+          "image": "Help"
+        },
+        {
+          "x": 252,
+          "y": 44,
+          "w": 55,
+          "h": 18,
+          "name": "Settings",
+          "image": "Settings"
+        }
+      ]
+    },
+    {
+      "x": 116,
+      "y": 128,
+      "w": 128,
+      "h": 128,
+      "name": "avatar",
+      "image": "avatar"
+    },
+    {
+      "x": -999999,
+      "y": -999999,
+      "w": 360,
+      "h": 24,
+      "name": "status_bar",
+      "image": "status_bar",
+      "layers": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 24,
+          "name": "status_bar_bg",
+          "image": "status_bar_bg"
+        }
+      ]
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 192,
+      "name": "app_bar",
+      "image": "app_bar",
+      "layers": [
+        {
+          "x": 4,
+          "y": 28,
+          "w": 48,
+          "h": 48,
+          "name": "back",
+          "image": "back"
+        },
+        {
+          "x": 320,
+          "y": 28,
+          "w": 36,
+          "h": 48,
+          "name": "more",
+          "annotations": {
+            "show": "action_overflow"
+          },
+          "image": "more"
+        }
+      ]
+    },
+    {
+      "x": 107,
+      "y": 272,
+      "w": 147,
+      "h": 24,
+      "name": "Bryan_McDonald",
+      "image": "Bryan_McDonald"
+    }
+  ]
+}

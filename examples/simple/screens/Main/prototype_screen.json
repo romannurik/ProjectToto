@@ -1,0 +1,152 @@
+{
+  "x": 0,
+  "y": 0,
+  "w": 360,
+  "h": 640,
+  "name": "Main",
+  "annotations": {
+    "default": true
+  },
+  "image": "Main",
+  "layers": [
+    {
+      "x": 0,
+      "y": 592,
+      "w": 360,
+      "h": 48,
+      "name": "navbar",
+      "image": "navbar"
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 24,
+      "name": "status_bar",
+      "image": "status_bar"
+    },
+    {
+      "x": -4,
+      "y": -4,
+      "w": 368,
+      "h": 92,
+      "name": "app_bar",
+      "image": "app_bar",
+      "stylingMargins": {
+        "l": 4,
+        "t": 4,
+        "r": 4,
+        "b": 8
+      }
+    },
+    {
+      "x": 0,
+      "y": 80,
+      "w": 360,
+      "h": 512,
+      "name": "cards",
+      "annotations": {
+        "scroll": "vertical"
+      },
+      "image": "cards",
+      "layers": [
+        {
+          "x": 7,
+          "y": 8,
+          "w": 345,
+          "h": 680,
+          "name": "Group",
+          "layers": [
+            {
+              "x": -1,
+              "y": 622,
+              "w": 172,
+              "h": 62,
+              "name": "clean",
+              "image": "clean",
+              "stylingMargins": {
+                "l": 2,
+                "t": 2,
+                "r": 2,
+                "b": 4
+              }
+            },
+            {
+              "x": -1,
+              "y": 454,
+              "w": 172,
+              "h": 166,
+              "name": "tickets",
+              "image": "tickets",
+              "stylingMargins": {
+                "l": 2,
+                "t": 2,
+                "r": 2,
+                "b": 4
+              }
+            },
+            {
+              "x": 175,
+              "y": 454,
+              "w": 172,
+              "h": 230,
+              "name": "groceries",
+              "image": "groceries",
+              "stylingMargins": {
+                "l": 2,
+                "t": 2,
+                "r": 2,
+                "b": 4
+              }
+            },
+            {
+              "x": 175,
+              "y": 230,
+              "w": 172,
+              "h": 222,
+              "name": "airlines",
+              "image": "airlines",
+              "stylingMargins": {
+                "l": 2,
+                "t": 2,
+                "r": 2,
+                "b": 4
+              }
+            },
+            {
+              "x": -1,
+              "y": 230,
+              "w": 172,
+              "h": 222,
+              "name": "road_trips",
+              "annotations": {
+                "navigate": "Detail"
+              },
+              "image": "road_trips",
+              "stylingMargins": {
+                "l": 2,
+                "t": 2,
+                "r": 2,
+                "b": 4
+              }
+            },
+            {
+              "x": -2,
+              "y": -2,
+              "w": 348,
+              "h": 230,
+              "name": "homes",
+              "image": "homes",
+              "stylingMargins": {
+                "l": 2,
+                "t": 2,
+                "r": 2,
+                "b": 4
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

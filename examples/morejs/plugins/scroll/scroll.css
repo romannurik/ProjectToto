@@ -1,0 +1,34 @@
+toto-layer.scroll-vertical {
+  overflow-y: scroll;
+  overflow-x: hidden; }
+
+toto-layer.scroll-horizontal {
+  overflow-x: scroll;
+  overflow-y: hidden; }
+  toto-layer.scroll-horizontal::-webkit-scrollbar {
+    display: none; }
+
+toto-layer.scroll-horizontal, toto-layer.scroll-vertical {
+  pointer-events: auto;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch; }
+  toto-layer.scroll-horizontal.engaged, toto-layer.scroll-vertical.engaged {
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: grabbing; }
+
+toto-screen .pager {
+  pointer-events: auto;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab; }
+  toto-screen .pager.engaged {
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: grabbing; }
+    toto-screen .pager.engaged .scroll-horizontal, toto-screen .pager.engaged .scroll-vertical {
+      cursor: -webkit-grabbing;
+      cursor: -moz-grabbing;
+      cursor: grabbing; }

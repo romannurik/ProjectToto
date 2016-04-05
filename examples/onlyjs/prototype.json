@@ -1,0 +1,11 @@
+{
+  "title": "onlyjs",
+  "screenResolution": [
+    400,
+    400
+  ],
+  "thumbnail": null,
+  "defaultScreen": "main",
+  "showHotspotsOnClick": false,
+  "screens": []
+}

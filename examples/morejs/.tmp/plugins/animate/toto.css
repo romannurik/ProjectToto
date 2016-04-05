@@ -1,0 +1,210 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: Roboto;
+  -webkit-font-smoothing: antialiased;
+  background: #eee;
+}
+@media only screen and (max-width: 600px) {
+  body {
+    background: #000;
+  }
+}
+
+.proto-root-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@media only screen and (max-width: 600px) {
+  .proto-root-container {
+    -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-align-items: flex-end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+  }
+}
+
+.meta {
+  position: absolute;
+  left: 48px;
+  top: 48px;
+}
+.meta .logo {
+  width: 50px;
+  height: 10px;
+}
+.meta .logo path {
+  fill: #ccc;
+}
+.meta .info {
+  font-size: 14px;
+  line-height: 16px;
+  color: #bbb;
+  font-weight: 500;
+  margin: 8px 0;
+}
+@media only screen and (max-width: 600px) {
+  .meta {
+    display: none;
+  }
+  .fullscreen-overlay .meta {
+    display: block;
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    top: 32px;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.proto-root {
+  background: #fff;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24), 0 4px 8px rgba(0, 0, 0, 0.12);
+  -webkit-transform: scale(1) translateZ(0);
+          transform: scale(1) translateZ(0);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
+}
+@media only screen and (max-width: 600px) {
+  .proto-root {
+    -webkit-transform: scale(1) translateZ(0) !important;
+            transform: scale(1) translateZ(0) !important;
+  }
+}
+.proto-root * {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .fullscreen-overlay .proto-root {
+    -webkit-filter: grayscale(100%) blur(5px);
+            filter: grayscale(100%) blur(5px);
+  }
+}
+.fullscreen-dialog {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 32px;
+  box-sizing: border-box;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+  font-family: Roboto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+@media only screen and (max-width: 600px) {
+  .fullscreen-dialog {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+.fullscreen-dialog .text {
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #F50057;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+}
+.fullscreen-dialog .fullscreen-button {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 16px;
+  border: 2px solid #F50057;
+  color: #F50057;
+  border-radius: 2px;
+  background-color: transparent;
+  padding: 12px 20px;
+  transition: background-color 0.1s ease, color 0.1s ease;
+}
+.fullscreen-dialog .fullscreen-button:active {
+  background-color: #F50057;
+  color: #fff;
+}
+.fullscreen-dialog .fullscreen-button:focus {
+  outline: 0;
+}
+
+.screen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+}
+.screen.current {
+  visibility: visible;
+  opacity: 1;
+}
+.screen .layer, .screen .group {
+  position: absolute;
+  background-size: contain;
+  pointer-events: none;
+  box-sizing: border-box;
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+}
+.screen .hidden {
+  visibility: hidden;
+}

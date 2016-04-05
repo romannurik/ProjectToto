@@ -1,0 +1,118 @@
+{
+  "x": 0,
+  "y": 0,
+  "w": 360,
+  "h": 640,
+  "name": "Road_Trips",
+  "image": "Road_Trips",
+  "layers": [
+    {
+      "x": 0,
+      "y": 592,
+      "w": 360,
+      "h": 48,
+      "name": "navbar",
+      "image": "navbar"
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 24,
+      "name": "status_bar",
+      "image": "status_bar",
+      "layers": [
+        {
+          "x": 242,
+          "y": 0,
+          "w": 118,
+          "h": 24,
+          "name": "status_bar_contents",
+          "image": "status_bar_contents"
+        }
+      ]
+    },
+    {
+      "x": -4,
+      "y": -4,
+      "w": 368,
+      "h": 204,
+      "name": "app_bar",
+      "image": "app_bar",
+      "stylingMargins": {
+        "l": 4,
+        "t": 4,
+        "r": 4,
+        "b": 8
+      },
+      "layers": [
+        {
+          "x": 187.5,
+          "y": 40,
+          "w": 120,
+          "h": 24,
+          "name": "Buttons",
+          "layers": [
+            {
+              "x": 0,
+              "y": 0,
+              "w": 24,
+              "h": 24,
+              "name": "favorite",
+              "image": "favorite"
+            },
+            {
+              "x": 48,
+              "y": 0,
+              "w": 24,
+              "h": 24,
+              "name": "bookmark",
+              "image": "bookmark"
+            },
+            {
+              "x": 96,
+              "y": 0,
+              "w": 24,
+              "h": 24,
+              "name": "share",
+              "image": "share"
+            }
+          ]
+        },
+        {
+          "x": 72,
+          "y": 112,
+          "w": 160,
+          "h": 64,
+          "name": "road_trip_text",
+          "image": "road_trip_text"
+        },
+        {
+          "x": 4,
+          "y": 28,
+          "w": 48,
+          "h": 48,
+          "name": "back",
+          "opacity": 0.87,
+          "image": "back"
+        },
+        {
+          "x": 332,
+          "y": 40,
+          "w": 12,
+          "h": 24,
+          "name": "more",
+          "image": "more"
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 192,
+          "name": "road_trip_image",
+          "image": "road_trip_image"
+        }
+      ]
+    }
+  ]
+}

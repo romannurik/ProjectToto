@@ -1,0 +1,217 @@
+{
+  "x": 0,
+  "y": 0,
+  "w": 360,
+  "h": 640,
+  "name": "SideNav",
+  "layers": [
+    {
+      "x": -18,
+      "y": -9,
+      "w": 340,
+      "h": 628,
+      "name": "drawer",
+      "annotations": {
+        "animation": "slideRight",
+        "hidden": true
+      },
+      "image": "drawer",
+      "stylingMargins": {
+        "l": 18,
+        "t": 9,
+        "r": 18,
+        "b": 27
+      },
+      "layers": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 304,
+          "h": 24,
+          "name": "status_bar_bg",
+          "image": "status_bar_bg"
+        },
+        {
+          "x": -4,
+          "y": 536,
+          "w": 312,
+          "h": 64,
+          "name": "floating_panel",
+          "image": "floating_panel",
+          "stylingMargins": {
+            "l": 4,
+            "t": 4,
+            "r": 4,
+            "b": 8
+          }
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 304,
+          "h": 592,
+          "name": "side_nav_content",
+          "annotations": {
+            "scroll": true
+          },
+          "image": "side_nav_content",
+          "layers": [
+            {
+              "x": -1,
+              "y": 192,
+              "w": 306,
+              "h": 429,
+              "name": "list",
+              "image": "list",
+              "stylingMargins": {
+                "l": 1,
+                "t": 0,
+                "r": 1,
+                "b": 0
+              },
+              "layers": [
+                {
+                  "x": 16,
+                  "y": 0,
+                  "w": 24,
+                  "h": 429,
+                  "name": "icons",
+                  "layers": [
+                    {
+                      "x": 0,
+                      "y": 309,
+                      "w": 24,
+                      "h": 25,
+                      "name": "promos",
+                      "image": "promos"
+                    },
+                    {
+                      "x": 0,
+                      "y": 405,
+                      "w": 24,
+                      "h": 24,
+                      "name": "social",
+                      "image": "social"
+                    },
+                    {
+                      "x": 0,
+                      "y": 261,
+                      "w": 24,
+                      "h": 25,
+                      "name": "updates",
+                      "image": "updates"
+                    },
+                    {
+                      "x": 0,
+                      "y": 213,
+                      "w": 24,
+                      "h": 25,
+                      "name": "forums",
+                      "image": "forums"
+                    },
+                    {
+                      "x": 0,
+                      "y": 48,
+                      "w": 24,
+                      "h": 24,
+                      "name": "outbox",
+                      "image": "outbox"
+                    },
+                    {
+                      "x": 0,
+                      "y": 165,
+                      "w": 24,
+                      "h": 24,
+                      "name": "spam",
+                      "image": "spam"
+                    },
+                    {
+                      "x": 0,
+                      "y": 117,
+                      "w": 24,
+                      "h": 24,
+                      "name": "trash",
+                      "image": "trash"
+                    },
+                    {
+                      "x": 0,
+                      "y": 357,
+                      "w": 24,
+                      "h": 25,
+                      "name": "purchases",
+                      "image": "purchases"
+                    },
+                    {
+                      "x": 0,
+                      "y": 0,
+                      "w": 24,
+                      "h": 24,
+                      "name": "inbox",
+                      "image": "inbox"
+                    }
+                  ]
+                },
+                {
+                  "x": 72,
+                  "y": 3,
+                  "w": 67,
+                  "h": 421,
+                  "name": "labels",
+                  "image": "labels"
+                }
+              ]
+            },
+            {
+              "x": 0,
+              "y": 0,
+              "w": 304,
+              "h": 172,
+              "name": "account_switcher",
+              "image": "account_switcher",
+              "layers": [
+                {
+                  "x": 16,
+                  "y": 40,
+                  "w": 64,
+                  "h": 64,
+                  "name": "account_avatar",
+                  "image": "account_avatar"
+                },
+                {
+                  "x": 264,
+                  "y": 135,
+                  "w": 24,
+                  "h": 24,
+                  "name": "triangle",
+                  "image": "triangle"
+                }
+              ]
+            },
+            {
+              "x": 0,
+              "y": 548,
+              "w": 304,
+              "h": 151,
+              "name": "spacer",
+              "opacity": 0,
+              "image": "spacer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 592,
+      "name": "drawer_scrim",
+      "annotations": {
+        "animation": "fade",
+        "hide": "drawer,drawer_scrim",
+        "hidden": true
+      },
+      "image": "drawer_scrim"
+    }
+  ]
+}
